@@ -1,0 +1,5 @@
+#report
+    %h1= @report.year
+    
+= link_to "Edit", edit_report_url
+= link_to "Delete", report_path(@report), method: :delete, data: {confirm: "Are you sure?"}
