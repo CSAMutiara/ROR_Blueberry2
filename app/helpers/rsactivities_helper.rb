@@ -1,0 +1,2 @@
+module RsactivitiesHelper
+end
