@@ -33,6 +33,8 @@ class ReportsController < ApplicationController
     end 
     
     def destroy
+        @report = Report.find(params[:id])
+        @report.tactivities.delete_all
         @report.destroy
         redirect_to root_path
     end 

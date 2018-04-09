@@ -1,0 +1,11 @@
+#service_activity
+    %h1= @sactivity.name
+    %h3= @sactivity.date
+    %p= @sactivity.ta1
+    %p= @sactivity.ta2
+    %p= @sactivity.ta3
+    %p= @sactivity.ta4
+    %p= @sactivity.ta5
+    
+= link_to "Edit", edit_sactivity_path(@sactivity)
+= link_to "Delete", sactivity_path(@sactivity), method: :delete, data: {confirm: "Are you sure?"}

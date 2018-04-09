@@ -1,0 +1,11 @@
+= simple_form_for([@report, @report.sactivities.build]) do |f|
+    = f.input :name, label: "Name", input_html: { class: "form-control" }
+    = f.input :date, label: "Date", input_html: { class: "form-control" }
+    = f.input :ta1, label: "How have you contributed service to your department or to the University at large over the last calendar year? Detail committee participation, curricular development, and anything else that has contributed to strengthening AUP’s learning environment and/or profile.", input_html: { class: "form-control" }
+    = f.input :ta2, label: "What kinds of departmental or university service do you plan to participate in next year? This question can be answered in dialogue with the department chair.", input_html: { class: "form-control" }
+    = f.input :ta3, label: "Please elaborate on any extra-curricular or co-curricular activities, such as study trips, mentoring of student clubs, oversight of student publications,...", input_html: { class: "form-control" }
+    = f.input :ta4, label: "Have you incorporated assessment of student learning into the programs in which you play role this year? Have any changes been made as a result of assessment activities, or for any other reasons, in or across departments in which you play a role?", input_html: { class: "form-control" }
+    = f.input :ta5, label: "Any other comments you would like to make about your service?", input_html: { class: "form-control" }
+    %br/
+    = f.button :submit
+    = link_to "Cancel", root_path

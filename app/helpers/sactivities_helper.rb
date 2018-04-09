@@ -1,0 +1,2 @@
+module SactivitiesHelper
+end

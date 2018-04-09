@@ -10,12 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180408232918) do
+ActiveRecord::Schema.define(version: 20180409001934) do
 
   create_table "reports", force: :cascade do |t|
     t.integer "year"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "sactivities", force: :cascade do |t|
+    t.string "name"
+    t.datetime "date"
+    t.text "ta1"
+    t.text "ta2"
+    t.text "ta3"
+    t.text "ta4"
+    t.text "ta5"
+    t.string "status"
+    t.integer "report_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["report_id"], name: "index_sactivities_on_report_id"
   end
 
   create_table "tactivities", force: :cascade do |t|
