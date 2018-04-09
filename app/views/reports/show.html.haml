@@ -28,3 +28,12 @@
     
     %h3= "Add a Research/Professional Activity"
     = render 'rsactivities/rsform'
+    
+%br/
+
+#iactivities
+    %h2= "Institutional Support Activities"
+    = render @report.iactivities
+    
+    %h3= "Add a Institutional Support Activity"
+    = render 'iactivities/iform'

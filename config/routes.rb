@@ -3,6 +3,7 @@ Rails.application.routes.draw do
         resources :tactivities
         resources :sactivities
         resources :rsactivities
+        resources :iactivities
     end 
     root 'reports#index'
 end

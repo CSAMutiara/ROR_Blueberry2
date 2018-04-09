@@ -10,7 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180409003256) do
+ActiveRecord::Schema.define(version: 20180409004409) do
+
+  create_table "iactivities", force: :cascade do |t|
+    t.string "name"
+    t.datetime "date"
+    t.text "ta1"
+    t.text "ta2"
+    t.text "ta3"
+    t.text "ta4"
+    t.string "ta5"
+    t.string "ta6"
+    t.string "status"
+    t.integer "report_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["report_id"], name: "index_iactivities_on_report_id"
+  end
 
   create_table "reports", force: :cascade do |t|
     t.integer "year"

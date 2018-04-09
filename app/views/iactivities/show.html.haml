@@ -1,0 +1,12 @@
+#institutional_support_activity
+    %h1= @iactivity.name
+    %h3= @iactivity.date
+    %p= @iactivity.ta1
+    %p= @iactivity.ta2
+    %p= @iactivity.ta3
+    %p= @iactivity.ta4
+    %p= @iactivity.ta5
+    %p= @iactivity.ta5
+    
+= link_to "Edit", edit_iactivity_path(@iactivity)
+= link_to "Delete", iactivity_path(@iactivity), method: :delete, data: {confirm: "Are you sure?"}
