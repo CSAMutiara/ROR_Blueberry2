@@ -1,0 +1,10 @@
+#research_professional_activity
+    %h1= @rsactivity.name
+    %h3= @rsactivity.date
+    %p= @rsactivity.ta1
+    %p= @rsactivity.ta2
+    %p= @rsactivity.ta3
+    %p= @rsactivity.ta4
+    
+= link_to "Edit", edit_rsactivity_path(@rsactivity)
+= link_to "Delete", rsactivity_path(@rsactivity), method: :delete, data: {confirm: "Are you sure?"}

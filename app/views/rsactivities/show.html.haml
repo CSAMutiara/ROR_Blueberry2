@@ -1,10 +1,8 @@
-#research_professional_activity
-    %h1= @rsactivity.name
-    %h3= @rsactivity.date
-    %p= @rsactivity.ta1
-    %p= @rsactivity.ta2
-    %p= @rsactivity.ta3
-    %p= @rsactivity.ta4
+#reference_activity
+    %h1= @rfactivity.name
+    %h3= @rfactivity.date
+    %p= @rfactivity.ta1
+    %p= @rfactivity.ta2
     
-= link_to "Edit", edit_rsactivity_path(@rsactivity)
-= link_to "Delete", rsactivity_path(@rsactivity), method: :delete, data: {confirm: "Are you sure?"}
+= link_to "Edit", edit_rfactivity_path(@rfactivity)
+= link_to "Delete", rfactivity_path(@rfactivity), method: :delete, data: {confirm: "Are you sure?"}

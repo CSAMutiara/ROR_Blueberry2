@@ -3,4 +3,5 @@ class Report < ApplicationRecord
     has_many :sactivities
     has_many :rsactivities
     has_many :iactivities
+    has_many :rfactivities
 end

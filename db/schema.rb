@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180409004409) do
+ActiveRecord::Schema.define(version: 20180409010102) do
 
   create_table "iactivities", force: :cascade do |t|
     t.string "name"
@@ -32,6 +32,18 @@ ActiveRecord::Schema.define(version: 20180409004409) do
     t.integer "year"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "rfactivities", force: :cascade do |t|
+    t.string "name"
+    t.datetime "date"
+    t.text "ta1"
+    t.text "ta2"
+    t.string "status"
+    t.integer "report_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["report_id"], name: "index_rfactivities_on_report_id"
   end
 
   create_table "rsactivities", force: :cascade do |t|

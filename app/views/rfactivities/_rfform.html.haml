@@ -1,0 +1,8 @@
+= simple_form_for([@report, @report.rfactivities.build]) do |f|
+    = f.input :name, label: "Name", input_html: { class: "form-control" }
+    = f.input :date, label: "Date", input_html: { class: "form-control" }
+    = f.input :ta1, label: "What type of reference? (Options: Collaborations with Students; Collaborations with other faculty; AUP Grants; External Grants; Books; Articles, Essays and Book Chapters - Published, Editor Contributor; Exhibitions, Film & Video; Workshops, Conference Presentations & Invited Talks; Public Commentary and Media Coverage; Community Involvement & Field Work; Awards, Honors &. Appointments) If you would like to see examples of how to classify your work please refer to last year’s Faculty Achievements Report. All work in progress or under revision should not be included in this table but should be mentioned in the FACULTY ACTIVITY section.", input_html: { class: "form-control" }
+    = f.input :ta2, label: "Please provide the descriptive information below. Please provide links to online material when possible and make sure to list each item only once in the table below.", input_html: { class: "form-control" }
+    %br/
+    = f.button :submit
+    = link_to "Cancel", root_path

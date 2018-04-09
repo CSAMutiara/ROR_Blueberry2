@@ -1,0 +1,2 @@
+module RfactivitiesHelper
+end
