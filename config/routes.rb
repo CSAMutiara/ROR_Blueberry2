@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
-    resources :reports
+    resources :reports do
+        resources :tactivities
+    end 
     root 'reports#index'
 end

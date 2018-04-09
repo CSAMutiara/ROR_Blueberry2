@@ -1,5 +1,12 @@
 #report
     %h1= @report.year
-    
+ 
 = link_to "Edit", edit_report_url
 = link_to "Delete", report_path(@report), method: :delete, data: {confirm: "Are you sure?"}
+
+#tactivities
+    %h2= "Teaching Activities"
+    = render @report.tactivities
+    
+    %h3= "Add a Teaching Activity"
+    = render 'tactivities/tform'

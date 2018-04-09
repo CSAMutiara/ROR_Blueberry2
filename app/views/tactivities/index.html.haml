@@ -1,0 +1,7 @@
+%h1 Teaching Activities
+
+- @tactivities.each do |tactivity|
+    %h3= link_to tactivity.name, tactivity
+    %p= tactivity.date
+    
+    
