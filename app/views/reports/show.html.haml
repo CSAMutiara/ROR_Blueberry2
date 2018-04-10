@@ -4,7 +4,7 @@
 .jumbotron.jumbotron-fluid
     #report
         %h1.display-4 #{@report.year} Activities
-        %p.lead Hello Faculty! Below, you will find all of your activities from the year #{@report.year} in descending order
+        %p.lead Hello Faculty! Below, you can view, update or delete your activities from the year #{@report.year} in descending order
     .row.text-center
         .col-md-10
         .col-md-1
@@ -29,6 +29,7 @@
                             %li.list-group-item.disabled
                                 %h3.card-title #{tactivity.name}
                                 %h5.card-title #{tactivity.date.strftime("%b %e, %Y (%T %p)")}
+                            %br/
                 .col-md-1
         %li.list-group-item
             %br/
@@ -62,6 +63,7 @@
                             %li.list-group-item.disabled
                                 %h3.card-title #{sactivity.name}
                                 %h5.card-title #{sactivity.date.strftime("%b %e, %Y (%T %p)")}
+                            %br/
                 .col-md-1
         %li.list-group-item
             %br/
@@ -95,6 +97,7 @@
                             %li.list-group-item.disabled
                                 %h3.card-title #{rsactivity.name}
                                 %h5.card-title #{rsactivity.date.strftime("%b %e, %Y (%T %p)")}
+                            %br/
                 .col-md-1
         %li.list-group-item
             %br/
@@ -128,6 +131,7 @@
                             %li.list-group-item.disabled
                                 %h3.card-title #{iactivity.name}
                                 %h5.card-title #{iactivity.date.strftime("%b %e, %Y (%T %p)")}
+                            %br/
                 .col-md-1
         %li.list-group-item
             %br/
@@ -137,9 +141,9 @@
                     %ul.list-group
                         %li.list-group-item.list-group-item-info
                             .row
-                                .col-md-4.text-center
+                                .col-md-5.text-center
                                     %h4 Add new Institutional Support Activity:
-                                .col-md-8
+                                .col-md-7
                     %ul.list-group
                         %li.list-group-item.disabled
                             = render 'iactivities/iform'
@@ -161,6 +165,7 @@
                             %li.list-group-item.disabled
                                 %h3.card-title #{rfactivity.name}
                                 %h5.card-title #{rfactivity.date.strftime("%b %e, %Y (%T %p)")}
+                            %br/
                 .col-md-1
         %li.list-group-item
             %br/
