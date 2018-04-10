@@ -1,1 +1,12 @@
 %h1 Teaching Activities
+
+- @tactivities.each do |tactivity|
+    %h1= tactivity.name
+    %h3= tactivity.date
+    %p= tactivity.ta1
+    %p= tactivity.ta2
+    %p= tactivity.ta3
+    %p= tactivity.ta4
+    %br/
+    %br/
+

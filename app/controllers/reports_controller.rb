@@ -1,14 +1,11 @@
 class ReportsController < ApplicationController
-    before_action :find_report, only: [:show, :showteaching, :edit, :update, :destroy]
+    before_action :find_report, only: [:show, :edit, :update, :destroy]
     
     def index
         @reports = Report.all.order("created_at DESC")
     end
     
     def show
-    end
-    
-    def showteaching
     end
     
     def new
@@ -54,5 +51,5 @@ class ReportsController < ApplicationController
     
     def find_report
         @report = Report.find(params[:id])
-    end 
+    end
 end

@@ -8,13 +8,13 @@
                 %li.nav-item
                     %a.nav-link.disabled= link_to "Teaching", report_tactivities_path(report)
                 %li.nav-item
-                    %a.nav-link.disabled= link_to "Services", report
+                    %a.nav-link.disabled= link_to "Services", report_sactivities_path(report)
                 %li.nav-item
-                    %a.nav-link.disabled= link_to "Research & Professional", report
+                    %a.nav-link.disabled= link_to "Research & Professional", report_rsactivities_path(report)
                 %li.nav-item
-                    %a.nav-link.disabled= link_to "Institutional Support", report
+                    %a.nav-link.disabled= link_to "Institutional Support", report_iactivities_path(report)
                 %li.nav-item
-                    %a.nav-link.disabled= link_to "References", report
+                    %a.nav-link.disabled= link_to "References", report_rfactivities_path(report)
         .card-body
             %h3= link_to report.year, report
             %p.card-text Activity Report Summary
