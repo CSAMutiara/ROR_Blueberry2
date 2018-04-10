@@ -1,6 +1,6 @@
 #teaching_activity
     %h1= @tactivity.name
-    %h3= @tactivity.date
+    %h3= @tactivity.date.strftime("%b %e %Y")
     %p= @tactivity.ta1
     %p= @tactivity.ta2
     %p= @tactivity.ta3

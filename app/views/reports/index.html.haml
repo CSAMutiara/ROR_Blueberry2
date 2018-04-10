@@ -2,5 +2,23 @@
 
 %p These are your Reports!
 - @reports.each do |report|
-    %h3= link_to report.year, report
+    .card.text-center.mb-3{:style => "max-width: 63rem;"}
+        .card-header
+            %ul.nav.nav-tabs.card-header-tabs
+                %li.nav-item
+                    %a.nav-link.disabled= link_to "Teaching", report
+                %li.nav-item
+                    %a.nav-link.disabled= link_to "Services", report
+                %li.nav-item
+                    %a.nav-link.disabled= link_to "Research & Professional", report
+                %li.nav-item
+                    %a.nav-link.disabled= link_to "Institutional Support", report
+                %li.nav-item
+                    %a.nav-link.disabled= link_to "References", report
+        .card-body
+            %h3= link_to report.year, report
+            %p.card-text Activity Report Summary
+    %br/
+    %br/
+
     
