@@ -1,24 +1,80 @@
-%h1 Welcome
+%br/
+%br/
+%br/
+.jumbotron.jumbotron-fluid
+    .container
+        %h1.display-4 Your Activity Reports
+        %p.lead Hello Faculty! Below, you will find all of your yearly Activities Reports in descending order
+%br/
+%br/
+%br/
 
-%p These are your Reports!
-- @reports.each do |report|
-    .card.text-center.mb-3{:style => "max-width: 63rem;"}
-        .card-header
-            %ul.nav.nav-tabs.card-header-tabs
-                %li.nav-item
-                    %a.nav-link.disabled= link_to "Teaching", report_tactivities_path(report)
-                %li.nav-item
-                    %a.nav-link.disabled= link_to "Services", report_sactivities_path(report)
-                %li.nav-item
-                    %a.nav-link.disabled= link_to "Research & Professional", report_rsactivities_path(report)
-                %li.nav-item
-                    %a.nav-link.disabled= link_to "Institutional Support", report_iactivities_path(report)
-                %li.nav-item
-                    %a.nav-link.disabled= link_to "References", report_rfactivities_path(report)
-        .card-body
-            %h3= link_to report.year, report
-            %p.card-text Activity Report Summary
-    %br/
-    %br/
+.activity-cards
+    - @reports.each do |report|
+        .card
+            .card-header
+            .card-body
+                %ul.list-group
+                    %li.list-group-item.list-group-item-info.text-center
+                        %h2.card-title= link_to report.year, report
+                    %li.list-group-item.disabled
+                        %br/
+                        %ul.list-group.list-group-flush
+                            %li.list-group-item
+                                .row
+                                    .col-md-1
+                                    .col-md-8
+                                        %h5 #{link_to "Teaching Activities", report_tactivities_path(report)} 
+                                    .col-md-1
+                                        %p #{link_to "Edit", root_path}
+                                    .col-md-1
+                                        %p #{link_to "Delete", root_path}
+                                    .col-md-1
+                            %li.list-group-item
+                                .row
+                                    .col-md-1
+                                    .col-md-8
+                                        %h5 #{link_to "Service Activities", report_sactivities_path(report)} 
+                                    .col-md-1
+                                        %p #{link_to "Edit", root_path}
+                                    .col-md-1
+                                        %p #{link_to "Delete", root_path}
+                                    .col-md-1
+                            %li.list-group-item
+                                .row
+                                    .col-md-1
+                                    .col-md-8
+                                        %h5 #{link_to "Research & Professional Activities", report_rsactivities_path(report)} 
+                                    .col-md-1
+                                        %p #{link_to "Edit", root_path}
+                                    .col-md-1
+                                        %p #{link_to "Delete", root_path}
+                                    .col-md-1
+                            %li.list-group-item
+                                .row
+                                    .col-md-1
+                                    .col-md-8
+                                        %h5 #{link_to "Institutional Support Activities", report_iactivities_path(report)} 
+                                    .col-md-1
+                                        %p #{link_to "Edit", root_path}
+                                    .col-md-1
+                                        %p #{link_to "Delete", root_path}
+                                    .col-md-1
+                            %li.list-group-item
+                                .row
+                                    .col-md-1
+                                    .col-md-8
+                                        %h5 #{link_to "References Activities", report_rfactivities_path(report)} 
+                                    .col-md-1
+                                        %p #{link_to "Edit", root_path}
+                                    .col-md-1
+                                        %p #{link_to "Delete", root_path}
+                                    .col-md-1
+                    %li.list-group-item.text-muted.text-center
+                        Approved: "DD/MM/YYYY (00:00:00 AM/PM)"
+                        %a.btn.btn-light{:href => "#"} Edit
+                        %a.btn.btn-light{:href => "#"} Delete
+        %br/
+        %br/
 
     

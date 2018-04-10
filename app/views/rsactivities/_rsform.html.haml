@@ -1,10 +1,16 @@
 = simple_form_for([@report, @report.rsactivities.build]) do |f|
-    = f.input :name, label: "Name", input_html: { class: "form-control" }
-    = f.input :date, label: "Date", input_html: { class: "form-control" }
+    %br/
+    .row
+        .col-md-7= f.input :name, label: "Name", input_html: { class: "form-control" }
+        .col-md-5= f.input :date, label: "Date", input_html: { class: "form-control" }
+    %br/
     = f.input :ta1, label: "What professional activities have you engaged in over the past year? List conference participation and hosting, workshops, professional development, formation continue, involvement in professional organizations or research groups. (You may simply refer to the REFERENCES section) ", input_html: { class: "form-control" }
     = f.input :ta2, label: "What research have you accomplished over the past calendar year? Given the nature of AUP’s curriculum, research is a broad spectrum of public professional activity ranging from traditional publication in recognized venues to a host of other productions (editing, reviewing, filmmaking, curating, conducting field work, etc.). Kindly describe all research activities in which you engage. (You may simply refer to the REFERENCES section). Please also mention work in process. ", input_html: { class: "form-control" }
     = f.input :ta3, label: "What research or professional activity do you plan to undertake over the coming year?", input_html: { class: "form-control" }
     = f.input :ta4, label: "Any other comments you would like to make about your research and professional activity?", input_html: { class: "form-control" }
     %br/
-    = f.button :submit
-    = link_to "Cancel", root_path
+    .row
+        .col-md-9
+        .col-md-1= link_to "Cancel", root_path
+        .col-md-1= f.button :submit
+    %br/

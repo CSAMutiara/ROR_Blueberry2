@@ -1,15 +1,39 @@
-%h1 Institutional Support Activities
+%br/
+%br/
+%br/
+.jumbotron.jumbotron-fluid
+    .container
+        %h1 Institutional Support Activities
+        %p.lead Hello Faculty! Below, you will find all of your Institutional Support Activities in descending order
+%br/
+%bbr/
+%br/
 
-- @iactivities.each do |iactivity|
-    %h1= iactivity.name
-    %h3= iactivity.date
-    %p= iactivity.ta1
-    %p= iactivity.ta2
-    %p= iactivity.ta3
-    %p= iactivity.ta4
-    %p= iactivity.ta5
-    %p= iactivity.ta6
-    %br/
-    %br/
-    
-    
+.activity-cards
+    - @iactivities.each do |iactivity|
+        .card.text-center
+            .card-header
+            .card-body
+                %ul.list-group
+                    %li.list-group-item.disabled Year# Report
+                    %li.list-group-item.list-group-item-info
+                        %h2.card-title #{iactivity.name}
+                        %h4.card-text by faculty
+                    %li.list-group-item.disabled
+                        Details:
+                        %br/
+                        %br/
+                        %ul.list-group.list-group-flush
+                            %li.list-group-item #{iactivity.ta1}
+                            %li.list-group-item #{iactivity.ta2}
+                            %li.list-group-item #{iactivity.ta3}
+                            %li.list-group-item #{iactivity.ta4}
+                            %li.list-group-item #{iactivity.ta5}
+                            %li.list-group-item #{iactivity.ta6}
+                    %li.list-group-item.text-muted
+                        Submitted: #{iactivity.date.strftime("%b %e, %Y (%T %p)")}
+                        %a.btn.btn-light{:href => "#"} Edit
+        %br/
+        %br/
+        %br/
+        %br/
