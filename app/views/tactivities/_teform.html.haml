@@ -1,16 +1,19 @@
-= simple_form_for @tactivity, url: report_tactivity_path do |f|
-    %br/
+.form-container
     .row
-        .col-md-7= f.input :name, label: "Name", input_html: { class: "form-control" }
-        .col-md-5= f.input :date, label: "Date", input_html: { class: "form-control" }
-    %br/
-    = f.input :ta1, label: "Please describe your activities and experience as a teacher during the year. Elaborate on pedagogical activities, curricular transformation or revision and new course development.", input_html: { class: "form-control" }
-    = f.input :ta2, label: "Please read your teaching evaluations for both semesters of the past calendar year and comment on them here. Are there any suggestions which you find useful and intend to incorporate into your courses in the future? Are there any comments which you wish to refute or explain?", input_html: { class: "form-control" }
-    = f.input :ta3, label: "For each one of the courses you have taught in the spring and fall of the last calendar year, please indicate how well your students are achieving the learning outcomes of your courses and the learning outcomes of the majors/programs your courses contribute to; include any evidence you have. Do you envisage making any changes in your courses as a result of assessment activities, or for any other reasons? Please, also consult with your chair about any assessment information he/she may need from you to complete the departmental report.", input_html: { class: "form-control" }
-    = f.input :ta4, label: "Any other comments you would like to make about your teaching? ", input_html: { class: "form-control" }
-    %br/
-    .row
-        .col-md-9
-        .col-md-1= link_to "Cancel", root_path
-        .col-md-1= f.button :submit
-    %br/
+        %ul.list-group
+            = simple_form_for @tactivity, url: report_tactivity_path do |f|
+                %li.list-group-item.list-group-item-info
+                    .row
+                        .col-md-7= f.input :name, label: "Name", input_html: { class: "form-control" }
+                        .col-md-5= f.input :date, label: "Date", input_html: { class: "form-control" }
+                    %br/
+                    = f.input :ta1, label: "Please describe your activities and experience as a teacher during the year. Elaborate on pedagogical activities, curricular transformation or revision and new course development.", input_html: { class: "form-control" }
+                    = f.input :ta2, label: "Please read your teaching evaluations for both semesters of the past calendar year and comment on them here. Are there any suggestions which you find useful and intend to incorporate into your courses in the future? Are there any comments which you wish to refute or explain?", input_html: { class: "form-control" }
+                    = f.input :ta3, label: "For each one of the courses you have taught in the spring and fall of the last calendar year, please indicate how well your students are achieving the learning outcomes of your courses and the learning outcomes of the majors/programs your courses contribute to; include any evidence you have. Do you envisage making any changes in your courses as a result of assessment activities, or for any other reasons? Please, also consult with your chair about any assessment information he/she may need from you to complete the departmental report.", input_html: { class: "form-control" }
+                    = f.input :ta4, label: "Any other comments you would like to make about your teaching? ", input_html: { class: "form-control" }
+                    %br/
+                    .row
+                        .col-md-9
+                        .col-md-1= link_to "Cancel", root_path
+                        .col-md-1= f.button :submit
+                    %br/
