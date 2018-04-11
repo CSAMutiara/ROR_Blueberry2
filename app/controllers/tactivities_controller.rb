@@ -1,12 +1,13 @@
 class TactivitiesController < ApplicationController
     before_action :find_tactivity, only: [:show, :edit, :update, :destroy]
-    before_action :find_report, only: [:create, :edit, :index, :destroy]
+    before_action :find_report, only: [:new, :create, :edit, :index, :destroy]
     
     def index
         @tactivities = Tactivity.all.order("created_at DESC")
     end
     
     def show
+        @report = Report.new
     end
     
     def new
