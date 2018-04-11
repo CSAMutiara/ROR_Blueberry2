@@ -1,10 +1,35 @@
+%br/
+%br/
+%br/
 #teaching_activity
-    %h1= @tactivity.name
-    %h3= @tactivity.date.strftime("%b %e %Y")
-    %p= @tactivity.ta1
-    %p= @tactivity.ta2
-    %p= @tactivity.ta3
-    %p= @tactivity.ta4
-    
-= link_to "Edit", edit_tactivity_path(@tactivity)
-= link_to "Delete", tactivity_path(@tactivity), method: :delete, data: {confirm: "Are you sure?"}
+    .card.text-center
+        .card-header
+        .card-body
+            %ul.list-group
+                %li.list-group-item.disabled A #{link_to @tactivity.report.year, report_path(@tactivity.report, @tactivity)} Teaching Activity
+                %li.list-group-item.list-group-item-info
+                    %h2.card-title #{@tactivity.name}
+                    %h4.card-text by faculty
+                %li.list-group-item
+                    Details:
+                    %br/
+                    %br/
+                    %ul.list-group.list-group-flush
+                        %li.list-group-item.disabled #{@tactivity.ta1}
+                        %li.list-group-item.disabled #{@tactivity.ta2}
+                        %li.list-group-item.disabled #{@tactivity.ta3}
+                        %li.list-group-item.disabled #{@tactivity.ta4}
+                    %p.card-text.text-muted
+                        Submitted: #{@tactivity.date.strftime("%b %e, %Y (%T %p)")}
+                %li.list-group-item.list-group-item-info
+                    .row
+                        .col-md-5
+                        .col-md-1
+                            %h4= link_to "Edit", edit_report_tactivity_path(@tactivity.report, @tactivity)
+                        .col-md-1
+                            %h4= link_to "Delete", report_tactivity_path(@tactivity.report, @tactivity), method: :delete, data: {confirm: "Are you sure?"}
+                        .col-md-5
+        %br/
+        %br/
+        %br/
+        %br/

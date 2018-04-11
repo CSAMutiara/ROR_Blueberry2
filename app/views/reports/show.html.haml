@@ -27,7 +27,7 @@
                     %ul.list-group
                         - @report.tactivities.each do |tactivity|
                             %li.list-group-item.disabled
-                                %h3.card-title #{tactivity.name}
+                                %h4.card-title #{link_to tactivity.name, report_tactivity_path(@report, tactivity)}
                                 %h5.card-title #{tactivity.date.strftime("%b %e, %Y (%T %p)")}
                             %br/
                 .col-md-1
