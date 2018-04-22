@@ -14,5 +14,5 @@ Rails.application.routes.draw do
         resources :iactivities
         resources :rfactivities
     end 
-    root 'sessions#create'
+    root 'reports#index'
 end
