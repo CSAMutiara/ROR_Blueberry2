@@ -1,5 +1,5 @@
 class ReportsController < ApplicationController
-    before_action :find_report, only: [:show, :edit, :update, :destroy]
+    before_action :find_report, only: [:show, :edit, :update, :index, :new, :destroy]
     
     def index
         @reports = Report.all.order("created_at DESC")
@@ -22,6 +22,7 @@ class ReportsController < ApplicationController
     end
     
     def edit
+        @report = Report.find(params[:id])
     end
     
     def update
@@ -45,11 +46,11 @@ class ReportsController < ApplicationController
     
     private
     
-    def report_params
-        params.require(:report).permit(:year)
+    def tactivity_params
+        params.require(:tactivity).permit(:date, :name, :ta1, :ta2, :ta3, :ta4, :status)
     end 
     
     def find_report
-        @report = Report.find(params[:id])
+        #@report = Report.find(params[:id])
     end
 end

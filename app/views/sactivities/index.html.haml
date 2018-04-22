@@ -1,14 +1,24 @@
 %br/
 %br/
 %br/
+.nav.nav-tabs.my-2.my-lg-0
+    %li#Teaching
+        = link_to "Teaching", 'reports/1/tactivities/', id: "teaching"
+    %li#Service
+        = link_to "Service", 'reports/17/sactivities/', id: "service"
+    %li#Research
+        = link_to "Research & Professional", '#rsactivities#new', id: "research"
+    %li#Institutional                    
+        = link_to "Institutional Support", '#iactivities#index', id: "institutional support" 
+    %li#References                    
+        = link_to "References", '#rfactivities#index', id: "references"
+    %li#Archive                    
+        = link_to "Archive", '/', id: "archive" 
 .jumbotron.jumbotron-fluid
     .container
-        %h1.display-4 Service Activities
-        %p.lead Hello Faculty! Below, you will find all of your Services Activities in descending order
+        %h1.display-4 Service
 %br/
-%bbr/
 %br/
-
 .activity-cards
     - @sactivities.each do |sactivity|
         .card.text-center
