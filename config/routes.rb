@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  
+ get  'auth/:provider/callback' => 'sessions#create'
+ post 'logout' => 'sessions#destroy'
+ get  'auth/failure' => 'sessions#failure'
+ get  'auth/twitter', :as => 'login'
+
+
+
     resources :reports do
         resources :tactivities
         resources :sactivities
@@ -6,5 +14,5 @@ Rails.application.routes.draw do
         resources :iactivities
         resources :rfactivities
     end 
-    root 'reports#index'
+    root 'sessions#create'
 end
