@@ -15,7 +15,7 @@
             .card-header
             .card-body
                 %ul.list-group
-                    %li.list-group-item.disabled Year# Report
+                    %li.list-group-item.disabled A #{link_to sactivity.report.year, report_path(sactivity.report)} Service Activity
                     %li.list-group-item.list-group-item-info
                         %h2.card-title #{sactivity.name}
                         %h4.card-text by faculty
@@ -29,9 +29,14 @@
                             %li.list-group-item #{sactivity.ta3}
                             %li.list-group-item #{sactivity.ta4}
                             %li.list-group-item #{sactivity.ta5}
-                    %li.list-group-item.text-muted
-                        Submitted: #{sactivity.date.strftime("%b %e, %Y (%T %p)")}
-                        %a.btn.btn-light{:href => "#"} Edit
+                        %p.text-muted Submitted: #{sactivity.date.strftime("%b %e, %Y (%T %p)")}
+                    %li.list-group-item
+                        .row
+                            .col-md-5
+                            .col-md-1
+                                %h5= link_to "Edit", edit_report_sactivity_path(@report, sactivity)
+                            .col-md-1 
+                                %h5= link_to "Delete", report_sactivity_path(@report, sactivity), method: :delete, data: {confirm: "Are you sure?"}
         %br/
         %br/
         %br/

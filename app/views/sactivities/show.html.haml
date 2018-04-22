@@ -1,11 +1,36 @@
+%br/
+%br/
+%br/
 #service_activity
-    %h1= @sactivity.name
-    %h3= @sactivity.date
-    %p= @sactivity.ta1
-    %p= @sactivity.ta2
-    %p= @sactivity.ta3
-    %p= @sactivity.ta4
-    %p= @sactivity.ta5
-    
-= link_to "Edit", edit_sactivity_path(@sactivity)
-= link_to "Delete", sactivity_path(@sactivity), method: :delete, data: {confirm: "Are you sure?"}
+    .card.text-center
+        .card-header
+        .card-body
+            %ul.list-group
+                %li.list-group-item.disabled A #{link_to @sactivity.report.year, report_path(@sactivity.report, @sactivity)} Service Activity
+                %li.list-group-item.list-group-item-info
+                    %h2.card-title #{@sactivity.name}
+                    %h4.card-text by faculty
+                %li.list-group-item
+                    Details:
+                    %br/
+                    %br/
+                    %ul.list-group.list-group-flush
+                        %li.list-group-item.disabled #{@sactivity.ta1}
+                        %li.list-group-item.disabled #{@sactivity.ta2}
+                        %li.list-group-item.disabled #{@sactivity.ta3}
+                        %li.list-group-item.disabled #{@sactivity.ta4}
+                        %li.list-group-item.disabled #{@sactivity.ta5}
+                    %p.card-text.text-muted
+                        Submitted: #{@sactivity.date.strftime("%b %e, %Y (%T %p)")}
+                %li.list-group-item.list-group-item-info
+                    .row
+                        .col-md-5
+                        .col-md-1
+                            %h4= link_to "Edit", edit_report_sactivity_path(@sactivity.report, @sactivity)
+                        .col-md-1
+                            %h4= link_to "Delete", report_sactivity_path(@sactivity.report, @sactivity), method: :delete, data: {confirm: "Are you sure?"}
+                        .col-md-5
+        %br/
+        %br/
+        %br/
+        %br/

@@ -5,84 +5,67 @@
     .container
         %h1.display-4 Your Activity Reports
         %p.lead Hello Faculty! Below, you will find all of your yearly Activities Reports in descending order
+        %p= (Time.now.strftime("%Y") == "2018")
 %br/
 %br/
 %br/
 
-.activity-cards
-    - @reports.each do |report|
-        .card
-            .card-header
-            .card-body
-                %ul.list-group
-                    %li.list-group-item.list-group-item-info.text-center
-                        %h2.card-title= link_to report.year, report
-                    %li.list-group-item.disabled
-                        %br/
-                        %ul.list-group.list-group-flush
-                            %li.list-group-item
-                                .row
-                                    .col-md-1
-                                    .col-md-8
-                                        %h5 #{link_to "Teaching Activities", report_tactivities_path(report)} 
-                                    .col-md-1
-                                        %p #{link_to "Edit", root_path}
-                                    .col-md-1
-                                        %p #{link_to "Delete", root_path}
-                                    .col-md-1
-                            %li.list-group-item
-                                .row
-                                    .col-md-1
-                                    .col-md-8
-                                        %h5 #{link_to "Service Activities", report_sactivities_path(report)} 
-                                    .col-md-1
-                                        %p #{link_to "Edit", root_path}
-                                    .col-md-1
-                                        %p #{link_to "Delete", root_path}
-                                    .col-md-1
-                            %li.list-group-item
-                                .row
-                                    .col-md-1
-                                    .col-md-8
-                                        %h5 #{link_to "Research & Professional Activities", report_rsactivities_path(report)} 
-                                    .col-md-1
-                                        %p #{link_to "Edit", root_path}
-                                    .col-md-1
-                                        %p #{link_to "Delete", root_path}
-                                    .col-md-1
-                            %li.list-group-item
-                                .row
-                                    .col-md-1
-                                    .col-md-8
-                                        %h5 #{link_to "Institutional Support Activities", report_iactivities_path(report)} 
-                                    .col-md-1
-                                        %p #{link_to "Edit", root_path}
-                                    .col-md-1
-                                        %p #{link_to "Delete", root_path}
-                                    .col-md-1
-                            %li.list-group-item
-                                .row
-                                    .col-md-1
-                                    .col-md-8
-                                        %h5 #{link_to "References Activities", report_rfactivities_path(report)} 
-                                    .col-md-1
-                                        %p #{link_to "Edit", root_path}
-                                    .col-md-1
-                                        %p #{link_to "Delete", root_path}
-                                    .col-md-1
-                    %li.list-group-item.text-muted.text-center
-                        .row
-                            .col-md-3
-                            .col-md-4
-                                Approved: "DD/MM/YYYY (00:00:00 AM/PM)"
-                            .col-md-1
-                                .row
-                                    .col-md-5
-                                        %h4= link_to "Edit", edit_report_path(report)
-                                    .col-md-5
-                                        %h4= link_to "Delete", report_path(report), method: :delete, data: {confirm: "Are you sure?"}
-                            .col-md-4
-        %br/
-        %br/
+.workspace
+    .card
+        .card-header
+        .card-body
+            %ul.list-group
+                %li.list-group-item.list-group-item-info.text-center
+                    %h2.card-title Workspace
+                %li.list-group-item.disabled
+                    %br/
+                    %ul.list-group.list-group-flush
+                        - @reports.each do |report|
+                            - if Time.now.strftime("%Y") == report.year.to_s
+                                %li.list-group-item
+                                    .row
+                                        .col-md-1
+                                        .col-md-7
+                                            %h5= link_to "Current Faculty Activity Report (#{report.year})", report
+                                        .col-md-1
+                                            %p #{link_to "Create", new_report_path}
+                                        .col-md-1
+                                            %p #{link_to "Edit", root_path}
+                                        .col-md-1
+                                            %p #{link_to "Delete", root_path}
+                                        .col-md-1
+                            - if (Time.now.strftime("%Y").to_i + 1) == report.year
+                                %li.list-group-item
+                                    .row
+                                        .col-md-1
+                                        .col-md-7
+                                            %h5= link_to "Upcoming Faculty Activity Report (#{report.year})", report
+                                        .col-md-1
+                                            %p #{link_to "Create", new_report_path}
+                                        .col-md-1
+                                            %p #{link_to "Edit", root_path}
+                                        .col-md-1
+                                            %p #{link_to "Delete", root_path}
+                                        .col-md-1
+    %br/
+    %br/
 
-    
+.archive
+    .card
+        .card-header
+        .card-body
+            %ul.list-group
+                %li.list-group-item.list-group-item-info.text-center
+                    %h2.card-title Archive
+                %li.list-group-item.disabled
+                    %br/
+                    %ul.list-group.list-group-flush
+                        - @reports.each do |report|
+                            - if (Time.now.strftime("%Y") != report.year.to_s) & ((Time.now.strftime("%Y").to_i + 1) != report.year) 
+                                %li.list-group-item
+                                    .row
+                                        .col-md-1
+                                        .col-md-8
+                                            %h5= link_to "#{report.year} Faculty Activity Report", report
+    %br/
+    %br/

@@ -15,173 +15,199 @@
 %br/
 %br/
 
-#tactivities
-    %ul.list-group
-        %li.list-group-item.list-group-item-info.text-center
-            %h2 #{link_to "Teaching Activities", report_tactivities_path(@report)} 
-        %li.list-group-item
-            %br/
-            .row
-                .col-md-2
-                .col-md-8
-                    %ul.list-group
-                        - @report.tactivities.each do |tactivity|
+
+- if 1 == 1
+    #tactivities
+        %ul.list-group
+            %li.list-group-item.list-group-item-info.text-center
+                %h2 #{link_to "Teaching Summary of #{@report.year}", report_tactivities_path(@report)} 
+            %li.list-group-item
+                %br/
+                .row
+                    .col-md-2
+                    .col-md-8
+                        %ul.list-group
+                            - @report.tactivities.each do |tactivity|
+                                %li.list-group-item.disabled
+                                    %h4.card-title #{link_to tactivity.name, report_tactivity_path(@report, tactivity)}
+                                    %h5.card-title #{tactivity.date.strftime("%b %e, %Y (%T %p)")}
+                                %br/
+                    .col-md-1
+    
+    %br/
+    %br/
+
+
+- if 1 == 2
+    #tactivities
+        %ul.list-group
+            %li.list-group-item.list-group-item-info.text-center
+                %h2 #{link_to "Create a Teaching Summary for #{@report.year}", report_tactivities_path(@report)} 
+            %li.list-group-item
+                %br/
+                .row
+                    .col-md-1
+                    .col-md-10
+                        %ul.list-group
                             %li.list-group-item.disabled
-                                %h4.card-title #{link_to tactivity.name, report_tactivity_path(@report, tactivity)}
-                                %h5.card-title #{tactivity.date.strftime("%b %e, %Y (%T %p)")}
-                            %br/
-                .col-md-1
-        %li.list-group-item
-            %br/
-            .row
-                .col-md-1
-                .col-md-10
-                    %ul.list-group
-                        %li.list-group-item.list-group-item-info
-                            .row
-                                .col-md-4.text-center
-                                    %h4 Add new Teaching Activity:
-                                .col-md-8
-                    %ul.list-group
-                        %li.list-group-item.disabled
-                            = render 'tactivities/tform'
+                                = render 'tactivities/tform'
+    
+    %br/
+    %br/
 
-%br/
-%br/
 
-#sactivities
-    %ul.list-group
-        %li.list-group-item.list-group-item-info.text-center
-            %h2 #{link_to "Service Activities", report_sactivities_path(@report)} 
-        %li.list-group-item
-            %br/
-            .row
-                .col-md-2
-                .col-md-8
-                    %ul.list-group
-                        - @report.sactivities.each do |sactivity|
+- if 1 == 2
+    #sactivities
+        %ul.list-group
+            %li.list-group-item.list-group-item-info.text-center
+                %h2 #{link_to "Service Summary from #{@report.year}", report_sactivities_path(@report)} 
+            %li.list-group-item
+                %br/
+                .row
+                    .col-md-2
+                    .col-md-8
+                        %ul.list-group
+                            - @report.sactivities.each do |sactivity|
+                                %li.list-group-item.disabled
+                                    %h4.card-title #{link_to sactivity.name, report_sactivity_path(@report, sactivity)}
+                                    %h5.card-title #{sactivity.date.strftime("%b %e, %Y (%T %p)")}
+                                %br/
+                    .col-md-1
+    %br/
+    %br/
+
+
+- if 1 == 2
+    #sactivities
+        %ul.list-group
+            %li.list-group-item.list-group-item-info.text-center
+                %h2 #{link_to "Create a Services Summary for #{@report.year}", report_sactivities_path(@report)} 
+            %li.list-group-item
+                %br/
+                .row
+                    .col-md-1
+                    .col-md-10
+                        %ul.list-group
                             %li.list-group-item.disabled
-                                %h3.card-title #{sactivity.name}
-                                %h5.card-title #{sactivity.date.strftime("%b %e, %Y (%T %p)")}
-                            %br/
-                .col-md-1
-        %li.list-group-item
-            %br/
-            .row
-                .col-md-1
-                .col-md-10
-                    %ul.list-group
-                        %li.list-group-item.list-group-item-info
-                            .row
-                                .col-md-4.text-center
-                                    %h4 Add new Service Activity:
-                                .col-md-8
-                    %ul.list-group
-                        %li.list-group-item.disabled
-                            = render 'sactivities/sform'
+                                = render 'sactivities/sform'
+    
+    %br/
+    %br/
 
-%br/
-%br/
 
-#rsactivities
-    %ul.list-group
-        %li.list-group-item.list-group-item-info.text-center
-            %h2 #{link_to "Research & Professional Activities", report_rsactivities_path(@report)} 
-        %li.list-group-item
-            %br/
-            .row
-                .col-md-2
-                .col-md-8
-                    %ul.list-group
-                        - @report.rsactivities.each do |rsactivity|
+- if 1 == 2
+    #rsactivities
+        %ul.list-group
+            %li.list-group-item.list-group-item-info.text-center
+                %h2 #{link_to "Research & Professional Activities Summary for #{@report.year}", report_rsactivities_path(@report)} 
+            %li.list-group-item
+                %br/
+                .row
+                    .col-md-2
+                    .col-md-8
+                        %ul.list-group
+                            - @report.rsactivities.each do |rsactivity|
+                                %li.list-group-item.disabled
+                                    %h4.card-title #{link_to rsactivity.name, report_rsactivity_path(@report, rsactivity)}
+                                    %h5.card-title #{rsactivity.date.strftime("%b %e, %Y (%T %p)")}
+                                %br/
+                    .col-md-1
+    %br/
+    %br/
+
+
+- if 1 == 2 
+    #rsactivities
+        %ul.list-group
+            %li.list-group-item.list-group-item-info.text-center
+                %h2 #{link_to "Create a Research & Professional Activities Summary for #{@report.year}", report_rsactivities_path(@report)} 
+            %li.list-group-item
+                %br/
+                .row
+                    .col-md-1
+                    .col-md-10
+                        %ul.list-group
                             %li.list-group-item.disabled
-                                %h3.card-title #{rsactivity.name}
-                                %h5.card-title #{rsactivity.date.strftime("%b %e, %Y (%T %p)")}
-                            %br/
-                .col-md-1
-        %li.list-group-item
-            %br/
-            .row
-                .col-md-1
-                .col-md-10
-                    %ul.list-group
-                        %li.list-group-item.list-group-item-info
-                            .row
-                                .col-md-6.text-center
-                                    %h4 Add new Research & Professional Activity:
-                                .col-md-6
-                    %ul.list-group
-                        %li.list-group-item.disabled
-                            = render 'rsactivities/rsform'
+                                = render 'rsactivities/rsform'
+    
+    %br/
+    %br/
 
-%br/
-%br/
 
-#iactivities
-    %ul.list-group
-        %li.list-group-item.list-group-item-info.text-center
-            %h2 #{link_to "Institutional Support Activities", report_iactivities_path(@report)} 
-        %li.list-group-item
-            %br/
-            .row
-                .col-md-2
-                .col-md-8
-                    %ul.list-group
-                        - @report.iactivities.each do |iactivity|
+- if 1 == 2   
+    #iactivities
+        %ul.list-group
+            %li.list-group-item.list-group-item-info.text-center
+                %h2 #{link_to "Institutional Support Request for #{@report.year}", report_iactivities_path(@report)} 
+            %li.list-group-item
+                %br/
+                .row
+                    .col-md-2
+                    .col-md-8
+                        %ul.list-group
+                            - @report.iactivities.each do |iactivity|
+                                %li.list-group-item.disabled
+                                    %h3.card-title #{iactivity.name}
+                                    %h5.card-title #{iactivity.date.strftime("%b %e, %Y (%T %p)")}
+                                %br/
+                    .col-md-1
+    %br/
+    %br/
+    
+
+- if 1 == 2   
+    #iactivities
+        %ul.list-group
+            %li.list-group-item.list-group-item-info.text-center
+                %h2 #{link_to "Create a Institutional Support Activities", report_iactivities_path(@report)} 
+            %li.list-group-item
+                %br/
+                .row
+                    .col-md-1
+                    .col-md-10
+                        %ul.list-group
                             %li.list-group-item.disabled
-                                %h3.card-title #{iactivity.name}
-                                %h5.card-title #{iactivity.date.strftime("%b %e, %Y (%T %p)")}
-                            %br/
-                .col-md-1
-        %li.list-group-item
-            %br/
-            .row
-                .col-md-1
-                .col-md-10
-                    %ul.list-group
-                        %li.list-group-item.list-group-item-info
-                            .row
-                                .col-md-5.text-center
-                                    %h4 Add new Institutional Support Activity:
-                                .col-md-7
-                    %ul.list-group
-                        %li.list-group-item.disabled
-                            = render 'iactivities/iform'
+                                = render 'iactivities/iform'
+    
+    %br/
+    %br/
 
-%br/
-%br/
 
-#rfactivities
-    %ul.list-group
-        %li.list-group-item.list-group-item-info.text-center
-            %h2 #{link_to "References Activities", report_rfactivities_path(@report)} 
-        %li.list-group-item
-            %br/
-            .row
-                .col-md-2
-                .col-md-8
-                    %ul.list-group
-                        - @report.rfactivities.each do |rfactivity|
+- if 1 == 2   
+    #rfactivities
+        %ul.list-group
+            %li.list-group-item.list-group-item-info.text-center
+                %h2 #{link_to "References of #{report.year}", report_rfactivities_path(@report)} 
+            %li.list-group-item
+                %br/
+                .row
+                    .col-md-2
+                    .col-md-8
+                        %ul.list-group
+                            - @report.rfactivities.each do |rfactivity|
+                                %li.list-group-item.disabled
+                                    %h3.card-title #{rfactivity.name}
+                                    %h5.card-title #{rfactivity.date.strftime("%b %e, %Y (%T %p)")}
+                                %br/
+                    .col-md-1
+    %br/
+    %br/
+
+
+- if 1 == 2   
+    #rfactivities
+        %ul.list-group
+            %li.list-group-item.list-group-item-info.text-center
+                %h2 #{link_to "Add a new Reference for #{report.year}", report_rfactivities_path(@report)} 
+            %li.list-group-item
+                %br/
+                .row
+                    .col-md-1
+                    .col-md-10
+                        %ul.list-group
                             %li.list-group-item.disabled
-                                %h3.card-title #{rfactivity.name}
-                                %h5.card-title #{rfactivity.date.strftime("%b %e, %Y (%T %p)")}
-                            %br/
-                .col-md-1
-        %li.list-group-item
-            %br/
-            .row
-                .col-md-1
-                .col-md-10
-                    %ul.list-group
-                        %li.list-group-item.list-group-item-info
-                            .row
-                                .col-md-4.text-center
-                                    %h4 Add new References Activity:
-                                .col-md-8
-                    %ul.list-group
-                        %li.list-group-item.disabled
-                            = render 'rfactivities/rfform'
-
-%br/
-%br/
+                                = render 'rfactivities/rfform'
+    
+    %br/
+    %br/
 
