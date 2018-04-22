@@ -16,11 +16,22 @@ module NavigationHelpers
     when /^the home\s?page$/
       '/'
     
+<<<<<<< HEAD
     when /^the add new report page$/
       '/reports/new'
     
     when /^the show report page$/
       '/reports/1'
+=======
+    when /^the teaching activity page$/
+      '/tactivities'
+    
+    when /^the add new teaching activity page$/
+      '/tactivities/new'
+    
+    when /^the show teaching activities page$/
+      '/tactivities/1'
+>>>>>>> 1dad98b949c74db5af644bb6e7eac6356c14d1bb
       
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

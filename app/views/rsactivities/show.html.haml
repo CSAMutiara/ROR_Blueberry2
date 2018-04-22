@@ -1,8 +1,35 @@
-#reference_activity
-    %h1= @rfactivity.name
-    %h3= @rfactivity.date
-    %p= @rfactivity.ta1
-    %p= @rfactivity.ta2
-    
-= link_to "Edit", edit_rfactivity_path(@rfactivity)
-= link_to "Delete", rfactivity_path(@rfactivity), method: :delete, data: {confirm: "Are you sure?"}
+%br/
+%br/
+%br/
+#research_professional_activity
+    .card.text-center
+        .card-header
+        .card-body
+            %ul.list-group
+                %li.list-group-item.disabled A #{link_to @rsactivity.report.year, report_path(@rsactivity.report, @rsactivity)} Research & Professional Activity
+                %li.list-group-item.list-group-item-info
+                    %h2.card-title #{@rsactivity.name}
+                    %h4.card-text by faculty
+                %li.list-group-item
+                    Details:
+                    %br/
+                    %br/
+                    %ul.list-group.list-group-flush
+                        %li.list-group-item.disabled #{@rsactivity.ta1}
+                        %li.list-group-item.disabled #{@rsactivity.ta2}
+                        %li.list-group-item.disabled #{@rsactivity.ta3}
+                        %li.list-group-item.disabled #{@rsactivity.ta4}
+                    %p.card-text.text-muted
+                        Submitted: #{@rsactivity.date.strftime("%b %e, %Y (%T %p)")}
+                %li.list-group-item.list-group-item-info
+                    .row
+                        .col-md-5
+                        .col-md-1
+                            %h4= link_to "Edit", edit_report_rsactivity_path(@rsactivity.report, @rsactivity)
+                        .col-md-1
+                            %h4= link_to "Delete", report_rsactivity_path(@rsactivity.report, @rsactivity), method: :delete, data: {confirm: "Are you sure?"}
+                        .col-md-5
+        %br/
+        %br/
+        %br/
+        %br/
