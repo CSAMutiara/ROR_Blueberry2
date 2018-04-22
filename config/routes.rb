@@ -7,4 +7,8 @@ Rails.application.routes.draw do
         resources :rfactivities
     end 
     root 'reports#index'
+    
+    resources :references do
+        resources :books
+    end
 end
