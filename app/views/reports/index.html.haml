@@ -1,29 +1,8 @@
 %br/
 %br/
-.nav.nav-tabs.my-2.my-lg-0
-    %li#Teaching
-        = link_to "Teaching", '#', id: "teaching"
-    %li#Service
-        = link_to "Service", 'reports/17/sactivities/', id: "service"
-    %li#Research
-        = link_to "Research & Professional", '#rsactivities#new', id: "research"
-    %li#Institutional                    
-        = link_to "Institutional Support", '#iactivities#index', id: "institutional support" 
-    %li#References                    
-        = link_to "References", '#rfactivities#index', id: "references"
-    %li#Archive                    
-        = link_to "Archive", 'reports', id: "archive" 
-
+%br/
 .jumbotron.jumbotron-fluid
     .container
-<<<<<<< HEAD
-        %h1.display-4 Faculty Activity Report
-        %p.lead Hello, Faculty.
-%br/
-%br/
-
-.activity-cards
-=======
         %h1.display-4 Your Activity Reports
         %p.lead Hello Faculty! Below, you will find all of your yearly Activities Reports in descending order
         %p= (Time.now.strftime("%Y") == "2018")
@@ -32,50 +11,11 @@
 %br/
 
 .workspace
->>>>>>> 1dad98b949c74db5af644bb6e7eac6356c14d1bb
     .card
         .card-header
         .card-body
             %ul.list-group
                 %li.list-group-item.list-group-item-info.text-center
-<<<<<<< HEAD
-                    %h2.card-title Reports
-                %li.list-group-item.disabled
-                    %br/
-                    %ul.list-group.list-group-flush
-                        %li.list-group-item
-                            .row
-                                .col-md-8
-                                    %h5 #{link_to "Current Faculty Activity Report", root_path} 
-                                .col-md-1
-                                    %p #{link_to "Create", new_report_path}
-                                .col-md-1
-                                    %p #{link_to "View", root_path}
-                                .col-md-1
-                                    %p #{link_to "Edit", root_path}
-                                .col-md-1
-                                    %p #{link_to "Delete", root_path}
-                            .row
-                                .col-md-8
-                                    %h5 #{link_to "Upcoming Faculty Activity Report", root_path} 
-                                .col-md-1
-                                    %p #{link_to "Create", root_path}
-                                .col-md-1
-                                    %p #{link_to "View", root_path}
-                                .col-md-1
-                                    %p #{link_to "Edit", root_path}
-                                .col-md-1
-                                    %p #{link_to "Delete", root_path}
-                                
-                %li.list-group-item.text-muted.text-center
-                    .row
-                        .col-md-10
-                        .col-md-2
-                            %h4= link_to "Archive"
-      
-%br/
-%br/
-=======
                     %h2.card-title Workspace
                 %li.list-group-item.disabled
                     %br/
@@ -129,4 +69,3 @@
                                             %h5= link_to "#{report.year} Faculty Activity Report", report
     %br/
     %br/
->>>>>>> 1dad98b949c74db5af644bb6e7eac6356c14d1bb
