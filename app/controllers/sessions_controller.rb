@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
     auth=request.env["omniauth.auth"]
     user=Activitygoer.where(:provider => auth["provider"], :uid => auth["uid"]) ||
       Activitygoer.create_with_omniauth(auth)
-    session[:user_id] = user.id
+    session[:user_id] = user.uid
     redirect_to activities_path
   end
   def destroy
