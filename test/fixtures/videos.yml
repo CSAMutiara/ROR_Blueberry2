@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  date: 2018-05-05
+  contributors: MyString
+  publisher: MyString
+  location: MyString
+  reference_id: 1
+
+two:
+  title: MyString
+  date: 2018-05-05
+  contributors: MyString
+  publisher: MyString
+  location: MyString
+  reference_id: 1
