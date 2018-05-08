@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20180410115532) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "iactivities", force: :cascade do |t|
     t.string "name"
     t.datetime "date"
@@ -22,7 +25,7 @@ ActiveRecord::Schema.define(version: 20180410115532) do
     t.string "ta5"
     t.string "ta6"
     t.string "status"
-    t.integer "report_id"
+    t.bigint "report_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["report_id"], name: "index_iactivities_on_report_id"
@@ -40,7 +43,7 @@ ActiveRecord::Schema.define(version: 20180410115532) do
     t.text "ta1"
     t.text "ta2"
     t.string "status"
-    t.integer "report_id"
+    t.bigint "report_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["report_id"], name: "index_rfactivities_on_report_id"
@@ -54,7 +57,7 @@ ActiveRecord::Schema.define(version: 20180410115532) do
     t.text "ta3"
     t.text "ta4"
     t.string "status"
-    t.integer "report_id"
+    t.bigint "report_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["report_id"], name: "index_rsactivities_on_report_id"
@@ -69,7 +72,7 @@ ActiveRecord::Schema.define(version: 20180410115532) do
     t.text "ta4"
     t.text "ta5"
     t.string "status"
-    t.integer "report_id"
+    t.bigint "report_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["report_id"], name: "index_sactivities_on_report_id"
@@ -83,7 +86,7 @@ ActiveRecord::Schema.define(version: 20180410115532) do
     t.text "ta3"
     t.text "ta4"
     t.string "status"
-    t.integer "report_id"
+    t.bigint "report_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["report_id"], name: "index_tactivities_on_report_id"
@@ -95,4 +98,9 @@ ActiveRecord::Schema.define(version: 20180410115532) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "iactivities", "reports"
+  add_foreign_key "rfactivities", "reports"
+  add_foreign_key "rsactivities", "reports"
+  add_foreign_key "sactivities", "reports"
+  add_foreign_key "tactivities", "reports"
 end
