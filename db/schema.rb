@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180410115532) do
+ActiveRecord::Schema.define(version: 20180512154147) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "books", force: :cascade do |t|
+    t.string "title"
+    t.string "author"
+    t.string "publisher"
+    t.string "year"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "iactivities", force: :cascade do |t|
     t.string "name"
@@ -29,6 +38,21 @@ ActiveRecord::Schema.define(version: 20180410115532) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["report_id"], name: "index_iactivities_on_report_id"
+  end
+
+  create_table "references", force: :cascade do |t|
+    t.string "books"
+    t.string "grants"
+    t.string "stcollabs"
+    t.string "facollabs"
+    t.string "aebcreferences"
+    t.string "efvreferences"
+    t.string "wcpitreferences"
+    t.string "pcmreferences"
+    t.string "cifwreferences"
+    t.string "ahareferences"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "reports", force: :cascade do |t|
