@@ -1,0 +1,21 @@
+
+<%= simple_form_for(@reference) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :books %>
+    <%= f.input :grants %>
+    <%= f.input :stcollabs %>
+    <%= f.input :facollabs %>
+    <%= f.input :aebcreferences %>
+    <%= f.input :efvreferences %>
+    <%= f.input :wcpitreferences %>
+    <%= f.input :pcmreferences %>
+    <%= f.input :cifwreferences %>
+    <%= f.input :ahareferences %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
