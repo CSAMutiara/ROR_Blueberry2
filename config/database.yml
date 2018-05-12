@@ -10,3 +10,4 @@ default: &default
 production:
   <<: *default
   database: app_production
+
