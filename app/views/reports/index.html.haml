@@ -43,7 +43,7 @@
                                         .col-md-1
                                             %p= link_to "Delete", report_path(report), method: :delete, data: {confirm: "Are you sure?"}
                                         .col-md-1
-                            - if (Time.now.strftime("%Y").to_i) < report.year
+                            - if Time.now.strftime("%Y") > report.year.to_s
                                 %li.list-group-item
                                     .row
                                         .col-md-1
@@ -70,7 +70,7 @@
                     %br/
                     %ul.list-group.list-group-flush
                         - @reports.each do |report|
-                            - if (Time.now.strftime("%Y").to_i > report.year) 
+                            - if Time.now.strftime("%Y") < report.year.to_s
                                 %li.list-group-item
                                     .row
                                         .col-md-1

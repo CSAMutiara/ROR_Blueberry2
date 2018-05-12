@@ -10,6 +10,21 @@ class ReportsController < ApplicationController
     
     def new
         @report = Report.new
+        #render 'new'
+        #if @report.exist?(report_params[:year])
+        #    flash[:notice] = "This year already exists. Please enter a different year or select the previously created year."
+        #else
+        render 'new'
+        #end
+        #if Report.exists?
+        #    flash[:notice] = "This year already exists. Please enter a different year or select the previously created year."
+        #else
+        #    @report.save
+            #redirect_to @report
+        #    else
+        #render 'new'
+        #    end
+        #end
     end
     
     def create
@@ -18,8 +33,9 @@ class ReportsController < ApplicationController
             redirect_to @report
         else 
             render 'new'
-        end 
+        end
     end
+
     
     def edit
     end

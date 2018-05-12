@@ -177,12 +177,6 @@
                     %ul.list-group
                         - @report.rfactivities.each do |rfactivity|
                             %li.list-group-item.disabled
-<<<<<<< HEAD
-                                = render 'rfactivities/rfform'
-    
-    %br/
-    %br/
-=======
                                 %h3.card-title #{rfactivity.name}
                                 %h5.card-title #{rfactivity.date.strftime("%b %e, %Y (%T %p)")}
                             %br/
@@ -207,4 +201,3 @@
 %br/
 %br/
 
->>>>>>> 05699a68a5005165c15b4032586b26bbeb8e5fd7
