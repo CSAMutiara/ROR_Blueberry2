@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :collabswfaculties
+  resources :collabswstudents
   resources :books
     resources :reports do
         resources :tactivities
