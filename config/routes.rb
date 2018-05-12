@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :references
     resources :reports do
         resources :tactivities
         resources :sactivities
@@ -9,6 +10,5 @@ Rails.application.routes.draw do
     root 'reports#index'
     
     resources :references do
-        resources :books
-    end
+          end
 end

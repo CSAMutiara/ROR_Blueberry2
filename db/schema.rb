@@ -10,21 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180425131514) do
-
-  create_table "books", force: :cascade do |t|
-    t.string "title"
-    t.string "containerr"
-    t.string "contributors"
-    t.string "version"
-    t.string "number"
-    t.string "publisher"
-    t.date "year"
-    t.string "location"
-    t.integer "reference_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+ActiveRecord::Schema.define(version: 20180512151347) do
 
   create_table "iactivities", force: :cascade do |t|
     t.string "name"
@@ -55,7 +41,16 @@ ActiveRecord::Schema.define(version: 20180425131514) do
   end
 
   create_table "references", force: :cascade do |t|
-    t.date "year"
+    t.string "books"
+    t.string "grants"
+    t.string "stcollabs"
+    t.string "facollabs"
+    t.string "aebcreferences"
+    t.string "efvreferences"
+    t.string "wcpitreferences"
+    t.string "pcmreferences"
+    t.string "cifwreferences"
+    t.string "ahareferences"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
