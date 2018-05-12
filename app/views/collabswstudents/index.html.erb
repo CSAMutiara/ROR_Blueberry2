@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Collabswstudents</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Teachname</th>
+      <th>Studename</th>
+      <th>Explanation</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @collabswstudents.each do |collabswstudent| %>
+      <tr>
+        <td><%= collabswstudent.teachname %></td>
+        <td><%= collabswstudent.studename %></td>
+        <td><%= collabswstudent.explanation %></td>
+        <td><%= link_to 'Show', collabswstudent %></td>
+        <td><%= link_to 'Edit', edit_collabswstudent_path(collabswstudent) %></td>
+        <td><%= link_to 'Destroy', collabswstudent, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Collabswstudent', new_collabswstudent_path %>

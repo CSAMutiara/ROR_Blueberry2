@@ -1,0 +1,2 @@
+class Collabswfaculty < ApplicationRecord
+end
