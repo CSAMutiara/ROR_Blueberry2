@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180410115532) do
+ActiveRecord::Schema.define(version: 20180512133209) do
 
   create_table "iactivities", force: :cascade do |t|
     t.string "name"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20180410115532) do
     t.integer "report_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "exists"
     t.index ["report_id"], name: "index_iactivities_on_report_id"
   end
 
@@ -43,6 +44,7 @@ ActiveRecord::Schema.define(version: 20180410115532) do
     t.integer "report_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "exists"
     t.index ["report_id"], name: "index_rfactivities_on_report_id"
   end
 
@@ -57,6 +59,7 @@ ActiveRecord::Schema.define(version: 20180410115532) do
     t.integer "report_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "exists"
     t.index ["report_id"], name: "index_rsactivities_on_report_id"
   end
 
@@ -72,6 +75,7 @@ ActiveRecord::Schema.define(version: 20180410115532) do
     t.integer "report_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "exists"
     t.index ["report_id"], name: "index_sactivities_on_report_id"
   end
 
@@ -86,6 +90,7 @@ ActiveRecord::Schema.define(version: 20180410115532) do
     t.integer "report_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "exists"
     t.index ["report_id"], name: "index_tactivities_on_report_id"
   end
 

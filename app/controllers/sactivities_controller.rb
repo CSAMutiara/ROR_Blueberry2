@@ -1,6 +1,6 @@
 class SactivitiesController < ApplicationController
     before_action :find_sactivity, only: [:show, :edit, :update, :destroy]
-    before_action :find_report, only: [:new, :create, :edit, :index, :destroy]
+    before_action :find_report, only: [:new, :create, :edit, :index, :destroy, :show]
     
     def index
         @sactivities = Sactivity.all.order("created_at DESC")
@@ -19,6 +19,7 @@ class SactivitiesController < ApplicationController
     end
     
     def edit
+        @sactivities = Sactivity.all.order("created_at DESC")
     end
     
     def update
@@ -31,7 +32,7 @@ class SactivitiesController < ApplicationController
     
     def destroy
         @sactivity.destroy
-        redirect_to report_path(@report)
+        redirect_to report_sactivities_path(@report)
     end
     
     private

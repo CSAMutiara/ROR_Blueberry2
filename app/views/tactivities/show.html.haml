@@ -1,34 +1,79 @@
 %br/
 %br/
 %br/
-#teaching_activity
-    .card.text-center
-        .card-header
-        .card-body
-            %ul.list-group
-                %li.list-group-item.disabled A #{link_to @tactivity.report.year, report_path(@tactivity.report, @tactivity)} Teaching Activity
-                %li.list-group-item.list-group-item-info
-                    %h2.card-title #{@tactivity.name}
-                    %h4.card-text by faculty
-                %li.list-group-item
-                    Details:
-                    %br/
-                    %br/
-                    %ul.list-group.list-group-flush
-                        %li.list-group-item.disabled #{@tactivity.ta1}
-                        %li.list-group-item.disabled #{@tactivity.ta2}
-                        %li.list-group-item.disabled #{@tactivity.ta3}
-                        %li.list-group-item.disabled #{@tactivity.ta4}
-                    %p.card-text.text-muted
-                        Submitted: #{@tactivity.date.strftime("%b %e, %Y (%T %p)")}
-                %li.list-group-item.list-group-item-info
+.row.text-center
+    .col-md-10
+    .col-md-1
+        %h4= link_to "Edit", edit_report_url(@tactivity.report)
+    .col-md-1
+        %h4= link_to "Delete", report_path(@tactivity.report), method: :delete, data: {confirm: "Are you sure?"}
+.jumbotron.jumbotron-fluid
+    #report
+        %h1.display-5= link_to "#{@report.year} Activities", report_path(@tactivity.report)
+        %p.lead Hello Faculty! Below, you can view, update or delete your activities from the year #{@tactivity.report.year}.
+    .row.text-center 
+        %nav{"aria-label" => "Page navigation"}
+            %ul.pagination
+                %li= link_to "Summary", report_path(@tactivity.report)
+                %li.disabled= link_to "Teaching", report_tactivities_path(@tactivity.report)
+                %li= link_to "Services", report_sactivities_path(@tactivity.report)
+                %li= link_to "Research & Professional", report_rsactivities_path(@tactivity.report)
+                %li= link_to "Institutional Support", report_iactivities_path(@tactivity.report)
+                %li= link_to "References", report_rfactivities_path(@tactivity.report)
+%br/
+%br/
+%br/
+
+#activities
+    %ul.list-group
+        %li.list-group-item.list-group-item-info.text-center
+            %h1 Teaching Summary for #{@tactivity.report.year} has been updated with:
+            %br/
+            %li.list-group-item
+                %br/
+                %br/
+                #tactivities
                     .row
-                        .col-md-5
                         .col-md-1
-                            %h4= link_to "Edit", edit_report_tactivity_path(@tactivity.report, @tactivity)
+                        .col-md-10
+                            .card.text-center
+                                .card-body
+                                    %ul.list-group.text-center
+                                        - if @tactivity.date.strftime("%Y").to_i == @tactivity.report.year
+                                            %li.list-group-item.disabled
+                                                .row
+                                                    .col-md-10
+                                                    .col-md-1
+                                                        %h5= link_to "Edit", edit_report_tactivity_path(@tactivity.report, @tactivity)
+                                                    .col-md-1 
+                                                        %h5= link_to "Delete", report_tactivity_path(@tactivity.report, @tactivity), method: :delete, data: {confirm: "Are you sure?"}
+                                            %li.list-group-item.list-group-item-info
+                                                %h2.card-title #{@tactivity.name}
+                                                %p.text-muted Submitted on #{@tactivity.date.strftime("%b %e, %Y (%T %p)")} by Faculty
+                                            %li.list-group-item.disabled
+                                                Details:
+                                                %br/
+                                                %br/
+                                                %ul.list-group.list-group-flush
+                                                    %li.list-group-item #{@tactivity.ta1}
+                                                    %li.list-group-item #{@tactivity.ta2}
+                                                    %li.list-group-item #{@tactivity.ta3}
+                                                    %li.list-group-item #{@tactivity.ta4}
+                                            %br/
                         .col-md-1
-                            %h4= link_to "Delete", report_tactivity_path(@tactivity.report, @tactivity), method: :delete, data: {confirm: "Are you sure?"}
-                        .col-md-5
+            %li.list-group-item.list-group-item-info.text-center
+                .row.text-center
+                    .col-md-2
+                        .row.text-center 
+                            %nav{"aria-label" => "Page navigation"}
+                                %ul.pagination
+                                    %li= link_to "« Back to Summary", report_path(@tactivity.report)
+                    .col-md-8
+                    .col-md-2
+                        .row.text-center 
+                            %nav{"aria-label" => "Page navigation"}
+                                %ul.pagination
+                                    %li= link_to "Move to Services »", report_sactivities_path(@tactivity.report)
         %br/
         %br/
         %br/

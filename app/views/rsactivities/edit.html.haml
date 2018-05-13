@@ -1,13 +1,56 @@
 %br/
 %br/
 %br/
+.row.text-center
+    .col-md-10
+    .col-md-1
+        %h4= link_to "Edit", edit_report_url(@rsactivity.report)
+    .col-md-1
+        %h4= link_to "Delete", report_path(@rsactivity.report), method: :delete, data: {confirm: "Are you sure?"}
 .jumbotron.jumbotron-fluid
-    .container
-        %h1.display-4 Update this Research & Professional Activity
-        %br/
-        %br/
-        %br/
-        = render 'rseform'
+    #report
+        %h1.display-5= link_to "#{@rsactivity.report.year} Activities", report_path(@rsactivity.report)
+        %p.lead Hello Faculty! Below, you can view, update or delete your activities from the year #{@rsactivity.report.year}.
+    .row.text-center 
+        %nav{"aria-label" => "Page navigation"}
+            %ul.pagination
+                %li= link_to "Summary", report_path(@rsactivity.report)
+                %li= link_to "Teaching", report_tactivities_path(@rsactivity.report)
+                %li= link_to "Services", report_sactivities_path(@rsactivity.report)
+                %li.disabled= link_to "Research & Professional", report_rsactivities_path(@rsactivity.report)
+                %li= link_to "Institutional Support", report_iactivities_path(@rsactivity.report)
+                %li= link_to "References", report_rfactivities_path(@rsactivity.report)
 %br/
 %br/
-%br/ 
+%br/
+
+#activities
+    %ul.list-group
+        %li.list-group-item.list-group-item-info.text-center
+            .row.text-center
+                %h1 Update this #{@rsactivity.report.year} Research & Professonal Activities Summary
+                %br/
+        %li.list-group-item
+            %br/
+            #tactivities
+                .row
+                    .col-md-1
+                    .col-md-10
+                        = render 'rsactivities/rseform'
+        %li.list-group-item.list-group-item-info.text-center
+            .row.text-center
+                .col-md-2
+                    .row.text-center 
+                        %nav{"aria-label" => "Page navigation"}
+                            %ul.pagination
+                                %li= link_to "« Back to Services", report_sactivities_path(@rsactivity.report)
+                .col-md-7
+                .col-md-3
+                    .row.text-center 
+                        %nav{"aria-label" => "Page navigation"}
+                            %ul.pagination
+                                %li= link_to "Move to Institutional Support »", report_iactivities_path(@rsactivity.report)
+        %br/
+        %br/
+        %br/
+        %br/

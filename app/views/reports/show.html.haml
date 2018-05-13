@@ -1,203 +1,159 @@
 %br/
 %br/
 %br/
+.row.text-center
+    .col-md-10
+    .col-md-1
+        %h4= link_to "Edit", edit_report_url(@report)
+    .col-md-1
+        %h4= link_to "Delete", report_path(@report), method: :delete, data: {confirm: "Are you sure?"}
 .jumbotron.jumbotron-fluid
     #report
-        %h1.display-4 #{@report.year} Activities
-        %p.lead Hello Faculty! Below, you can view, update or delete your activities from the year #{@report.year} in descending order
-    .row.text-center
-        .col-md-10
-        .col-md-1
-            %h4= link_to "Edit", edit_report_url
-        .col-md-1
-            %h4= link_to "Delete", report_path(@report), method: :delete, data: {confirm: "Are you sure?"}
+        %h1.display-4= link_to "#{@report.year} Activities", report_path(@report)
+        %p.lead Hello Faculty! Below, you can view, update or delete your activities from the year #{@report.year}.
+    .row.text-center 
+        %nav{"aria-label" => "Page navigation"}
+            %ul.pagination
+                %li.disabled= link_to "Summary", report_path(@report)
+                %li= link_to "Teaching", report_tactivities_path(@report)
+                %li= link_to "Services", report_sactivities_path(@report)
+                %li= link_to "Research & Professional", report_rsactivities_path(@report)
+                %li= link_to "Institutional Support", report_iactivities_path(@report)
+                %li= link_to "References", report_rfactivities_path(@report)
 %br/
 %br/
 %br/
 
-
-#tactivities
+#activities
     %ul.list-group
         %li.list-group-item.list-group-item-info.text-center
-            %h2 #{link_to "Teaching Summary of #{@report.year}", report_tactivities_path(@report)} 
+            %h2 Summary of #{@report.year}
+            %br/
         %li.list-group-item
             %br/
-            .row
-                .col-md-2
-                .col-md-8
-                    %ul.list-group
-                        - @report.tactivities.each do |tactivity|
-                            %li.list-group-item.disabled
-                                %h4.card-title #{link_to tactivity.name, report_tactivity_path(@report, tactivity)}
-                                %h5.card-title #{tactivity.date.strftime("%b %e, %Y (%T %p)")}
-                            %br/
-                .col-md-1
-
-%br/
-%br/
-
-
-#tactivities
-    %ul.list-group
+            #tactivities
+                - if Tactivity.where(report_id: @report).first
+                    .row
+                        .col-md-2
+                        .col-md-8
+                            %ul.list-group
+                                - @report.tactivities.each do |tactivity|
+                                    %li.list-group-item.disabled
+                                        %h4.card-title #{link_to "Teaching Activities", report_tactivities_path(@report)}
+                                        %h5.card-title #{tactivity.date.strftime("%b %e, %Y (%T %p)")}
+                        .col-md-1
+                - else
+                    .row
+                        .col-md-2
+                        .col-md-8
+                            %ul.list-group
+                                %li.list-group-item.disabled
+                                    %h4.card-title.disabled Missing Teaching Activities Summary
+                                    %p.card-title You haven't submitted any information to this section yet. Click #{link_to "here", report_tactivities_path(@report)} to get started.
+                        .col-md-1
+            %br/
+            #sactivities
+                - if Sactivity.where(report_id: @report).first
+                    .row
+                        .col-md-2
+                        .col-md-8
+                            %ul.list-group
+                                - @report.sactivities.each do |sactivity|
+                                    %li.list-group-item.disabled
+                                        %h4.card-title #{link_to "Services", report_sactivities_path(@report)}
+                                        %h5.card-title #{sactivity.date.strftime("%b %e, %Y (%T %p)")}
+                        .col-md-1
+                - else
+                    .row
+                    .row
+                        .col-md-2
+                        .col-md-8
+                            %ul.list-group
+                                %li.list-group-item.disabled
+                                    %h4.card-title.disabled Missing Services Summary
+                                    %p.card-title You haven't submitted any information to this section yet. Click #{link_to "here", report_sactivities_path(@report)} to get started.
+                        .col-md-1
+            %br/
+            #rsactivities
+                - if Rsactivity.where(report_id: @report).first
+                    .row
+                        .col-md-2
+                        .col-md-8
+                            %ul.list-group
+                                - @report.rsactivities.each do |rsactivity|
+                                    %li.list-group-item.disabled
+                                        %h4.card-title #{link_to "Research & Professional Activities", report_rsactivities_path(@report)}
+                                        %h5.card-title #{rsactivity.date.strftime("%b %e, %Y (%T %p)")}
+                        .col-md-1
+                - else
+                    .row
+                        .col-md-2
+                        .col-md-8
+                            %ul.list-group
+                                %li.list-group-item.disabled
+                                    %h4.card-title.disabled Missing Research & Professional Activities Summary
+                                    %p.card-title You haven't submitted any information to this section yet. Click #{link_to "here", report_rsactivities_path(@report)} to get started.
+                        .col-md-1
+            %br/
+            #iactivities
+                - if Iactivity.where(report_id: @report).first
+                    .row
+                        .col-md-2
+                        .col-md-8
+                            %ul.list-group
+                                - @report.iactivities.each do |iactivity|
+                                    %li.list-group-item.disabled
+                                        %h4.card-title #{link_to "Institutional Support", report_iactivities_path(@report)}
+                                        %h5.card-title #{iactivity.date.strftime("%b %e, %Y (%T %p)")}
+                        .col-md-1
+                - else
+                    .row
+                        .col-md-2
+                        .col-md-8
+                            %ul.list-group
+                                %li.list-group-item.disabled
+                                    %h4.card-title.disabled Missing Institutional Support Summary
+                                    %p.card-title You haven't submitted any information to this section yet. Click #{link_to "here", report_iactivities_path(@report)} to get started.
+                        .col-md-1
+            %br/
         %li.list-group-item.list-group-item-info.text-center
-            %h2 #{link_to "Create a Teaching Summary for #{@report.year}", report_tactivities_path(@report)} 
+            %h2 References of #{@report.year}
+            %br/
         %li.list-group-item
             %br/
-            .row
-                .col-md-1
-                .col-md-10
-                    %ul.list-group
-                        %li.list-group-item.disabled
-                            = render 'tactivities/tform'
-
-%br/
-%br/
-
-
-#sactivities
-    %ul.list-group
+            #rfactivities
+                - if Rfactivity.where(report_id: @report).first
+                    .row
+                        .col-md-2
+                        .col-md-8
+                            %ul.list-group
+                                - @report.rfactivities.each do |rfactivity|
+                                    %li.list-group-item.disabled
+                                        %h4.card-title #{link_to rfactivity.name, report_rfactivity_path(@report, rfactivity)}
+                                        %h5.card-title #{rfactivity.date.strftime("%b %e, %Y (%T %p)")}
+                        .col-md-1
+                    .row
+                        .col-md-2
+                        .col-md-8
+                            %ul.list-group
+                                %li.list-group-item.disabled
+                                    %h4.card-title.disabled Missing Reference?
+                                    %p.card-title Would you like to submit new information to this section? Click #{link_to "here", report_rfactivities_path(@report)} to continue.
+                        .col-md-1
+                - else
+                    .row
+                        .col-md-2
+                        .col-md-8
+                            %ul.list-group
+                                %li.list-group-item.disabled
+                                    %h4.card-title.disabled Missing References
+                                    %p.card-title You haven't submitted any information to this section yet. Click #{link_to "here", report_rfactivities_path(@report)} to get started.
+                        .col-md-1
+            %br/
         %li.list-group-item.list-group-item-info.text-center
-            %h2 #{link_to "Service Summary from #{@report.year}", report_sactivities_path(@report)} 
-        %li.list-group-item
-            %br/
-            .row
-                .col-md-2
-                .col-md-8
-                    %ul.list-group
-                        - @report.sactivities.each do |sactivity|
-                            %li.list-group-item.disabled
-                                %h4.card-title #{link_to sactivity.name, report_sactivity_path(@report, sactivity)}
-                                %h5.card-title #{sactivity.date.strftime("%b %e, %Y (%T %p)")}
-                            %br/
-                .col-md-1
-%br/
-%br/
-
-
-#sactivities
-    %ul.list-group
-        %li.list-group-item.list-group-item-info.text-center
-            %h2 #{link_to "Create a Services Summary for #{@report.year}", report_sactivities_path(@report)} 
-        %li.list-group-item
-            %br/
-            .row
-                .col-md-1
-                .col-md-10
-                    %ul.list-group
-                        %li.list-group-item.disabled
-                            = render 'sactivities/sform'
-
-%br/
-%br/
-
-
-#rsactivities
-    %ul.list-group
-        %li.list-group-item.list-group-item-info.text-center
-            %h2 #{link_to "Research & Professional Activities Summary for #{@report.year}", report_rsactivities_path(@report)} 
-        %li.list-group-item
-            %br/
-            .row
-                .col-md-2
-                .col-md-8
-                    %ul.list-group
-                        - @report.rsactivities.each do |rsactivity|
-                            %li.list-group-item.disabled
-                                %h4.card-title #{link_to rsactivity.name, report_rsactivity_path(@report, rsactivity)}
-                                %h5.card-title #{rsactivity.date.strftime("%b %e, %Y (%T %p)")}
-                            %br/
-                .col-md-1
-%br/
-%br/
-
-
-#rsactivities
-    %ul.list-group
-        %li.list-group-item.list-group-item-info.text-center
-            %h2 #{link_to "Create a Research & Professional Activities Summary for #{@report.year}", report_rsactivities_path(@report)} 
-        %li.list-group-item
-            %br/
-            .row
-                .col-md-1
-                .col-md-10
-                    %ul.list-group
-                        %li.list-group-item.disabled
-                            = render 'rsactivities/rsform'
-
-%br/
-%br/
-
-
-#iactivities
-    %ul.list-group
-        %li.list-group-item.list-group-item-info.text-center
-            %h2 #{link_to "Institutional Support Request for #{@report.year}", report_iactivities_path(@report)} 
-        %li.list-group-item
-            %br/
-            .row
-                .col-md-2
-                .col-md-8
-                    %ul.list-group
-                        - @report.iactivities.each do |iactivity|
-                            %li.list-group-item.disabled
-                                %h3.card-title #{iactivity.name}
-                                %h5.card-title #{iactivity.date.strftime("%b %e, %Y (%T %p)")}
-                            %br/
-                .col-md-1
-%br/
-%br/
-
-
-#iactivities
-    %ul.list-group
-        %li.list-group-item.list-group-item-info.text-center
-            %h2 #{link_to "Create a Institutional Support Activities", report_iactivities_path(@report)} 
-        %li.list-group-item
-            %br/
-            .row
-                .col-md-1
-                .col-md-10
-                    %ul.list-group
-                        %li.list-group-item.disabled
-                            = render 'iactivities/iform'
-
-%br/
-%br/
-
-
-#rfactivities
-    %ul.list-group
-        %li.list-group-item.list-group-item-info.text-center
-            %h2 #{link_to "References of #{@report.year}", report_rfactivities_path(@report)} 
-        %li.list-group-item
-            %br/
-            .row
-                .col-md-2
-                .col-md-8
-                    %ul.list-group
-                        - @report.rfactivities.each do |rfactivity|
-                            %li.list-group-item.disabled
-                                %h3.card-title #{rfactivity.name}
-                                %h5.card-title #{rfactivity.date.strftime("%b %e, %Y (%T %p)")}
-                            %br/
-                .col-md-1
-%br/
-%br/
-
-
-#rfactivities
-    %ul.list-group
-        %li.list-group-item.list-group-item-info.text-center
-            %h2 #{link_to "Add a new Reference for #{@report.year}", report_rfactivities_path(@report)} 
-        %li.list-group-item
-            %br/
-            .row
-                .col-md-1
-                .col-md-10
-                    %ul.list-group
-                        %li.list-group-item.disabled
-                            = render 'rfactivities/rfform'
-
-%br/
-%br/
-
+            .row.text-center
+                .col-md-9
+                .col-md-3
+                    %nav{"aria-label" => "Page navigation"}
+                        %ul.pagination
+                            %li= link_to "Move to Teaching Activities »", report_tactivities_path(@report)
