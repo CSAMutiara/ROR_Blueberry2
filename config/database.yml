@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> ebd08c7ca640bd4f0ca740e4056c4f242e34d536
 default: &default
   adapter: postgresql
   host: localhost

@@ -1,6 +1,6 @@
 class TactivitiesController < ApplicationController
     before_action :find_tactivity, only: [:show, :edit, :update, :destroy]
-    before_action :find_report, only: [:new, :create, :edit, :index, :destroy]
+    before_action :find_report, only: [:new, :create, :edit, :index, :destroy, :show]
     
     def index
         @tactivities = Tactivity.all.order("created_at DESC")
@@ -32,7 +32,7 @@ class TactivitiesController < ApplicationController
     
     def destroy
         @tactivity.destroy
-        redirect_to report_path(@report)
+        redirect_to report_tactivities_path(@report)
     end
     
     private

@@ -7,4 +7,5 @@ Rails.application.routes.draw do
         resources :rfactivities
     end 
     root 'reports#index'
+    get 'pdf_pages', :to => 'rfactivities#index', format: 'pdf'
 end

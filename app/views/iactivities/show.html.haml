@@ -1,12 +1,82 @@
-#institutional_support_activity
-    %h1= @iactivity.name
-    %h3= @iactivity.date
-    %p= @iactivity.ta1
-    %p= @iactivity.ta2
-    %p= @iactivity.ta3
-    %p= @iactivity.ta4
-    %p= @iactivity.ta5
-    %p= @iactivity.ta5
-    
-= link_to "Edit", edit_iactivity_path(@iactivity)
-= link_to "Delete", iactivity_path(@iactivity), method: :delete, data: {confirm: "Are you sure?"}
+%br/
+%br/
+%br/
+.row.text-center
+    .col-md-10
+    .col-md-1
+        %h4= link_to "Edit", edit_report_url(@iactivity.report)
+    .col-md-1
+        %h4= link_to "Delete", report_path(@iactivity.report), method: :delete, data: {confirm: "Are you sure?"}
+.jumbotron.jumbotron-fluid
+    #report
+        %h1.display-5= link_to "#{@report.year} Activities", report_path(@iactivity.report)
+        %p.lead Hello Faculty! Below, you can view, update or delete your activities from the year #{@iactivity.report.year}.
+    .row.text-center 
+        %nav{"aria-label" => "Page navigation"}
+            %ul.pagination
+                %li= link_to "Summary", report_path(@iactivity.report)
+                %li= link_to "Teaching", report_tactivities_path(@iactivity.report)
+                %li= link_to "Services", report_sactivities_path(@iactivity.report)
+                %li= link_to "Research & Professional", report_rsactivities_path(@iactivity.report)
+                %li.disabled= link_to "Institutional Support", report_iactivities_path(@iactivity.report)
+                %li= link_to "References", report_rfactivities_path(@iactivity.report)
+%br/
+%br/
+%br/
+
+#activities
+    %ul.list-group
+        %li.list-group-item.list-group-item-info.text-center
+            %h1 Institutional Support Summary for #{@iactivity.report.year} has been updated with:
+            %br/
+            %li.list-group-item
+                %br/
+                %br/
+                #iactivities
+                    .row
+                        .col-md-1
+                        .col-md-10
+                            .card.text-center
+                                .card-body
+                                    %ul.list-group.text-center
+                                        - if @iactivity.date.strftime("%Y").to_i == @iactivity.report.year
+                                            %li.list-group-item.disabled
+                                                .row
+                                                    .col-md-10
+                                                    .col-md-1
+                                                        %h5= link_to "Edit", edit_report_iactivity_path(@iactivity.report, @iactivity)
+                                                    .col-md-1 
+                                                        %h5= link_to "Delete", report_iactivity_path(@iactivity.report, @iactivity), method: :delete, data: {confirm: "Are you sure?"}
+                                            %li.list-group-item.list-group-item-info
+                                                %h2.card-title #{@iactivity.name}
+                                            %li.list-group-item.disabled
+                                                Details:
+                                                %br/
+                                                %br/
+                                                %ul.list-group.list-group-flush
+                                                    %li.list-group-item #{@iactivity.ta1}
+                                                    %li.list-group-item #{@iactivity.ta2}
+                                                    %li.list-group-item #{@iactivity.ta3}
+                                                    %li.list-group-item #{@iactivity.ta4}
+                                                    %li.list-group-item #{@iactivity.ta5}
+                                                    %li.list-group-item #{@iactivity.ta6}
+                                                %p.text-muted Submitted on #{@iactivity.date.strftime("%b %e, %Y (%T %p)")} by Faculty
+                                            %br/
+                        .col-md-1
+        %li.list-group-item.list-group-item-info.text-center
+            .row.text-center
+                .col-md-4
+                    .row.text-center 
+                        %nav{"aria-label" => "Page navigation"}
+                            %ul.pagination
+                                %li= link_to "« Back to Research & Professional Activities", report_rsactivities_path(@iactivity.report)
+                .col-md-6
+                .col-md-2
+                    .row.text-center 
+                        %nav{"aria-label" => "Page navigation"}
+                            %ul.pagination
+                                %li= link_to "Move to References »", report_rfactivities_path(@iactivity.report)
+        %br/
+        %br/
+        %br/
+        %br/

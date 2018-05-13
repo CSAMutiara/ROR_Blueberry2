@@ -2,7 +2,7 @@
     .row
         %ul.list-group
             = simple_form_for @tactivity, url: report_tactivity_path do |f|
-                %li.list-group-item.list-group-item-info
+                %li.list-group-item.disabled
                     .row
                         .col-md-7= f.input :name, label: "Name", input_html: { class: "form-control" }
                         .col-md-5= f.input :date, label: "Date", input_html: { class: "form-control" }
@@ -14,6 +14,6 @@
                     %br/
                     .row
                         .col-md-9
-                        .col-md-1= link_to "Cancel", root_path
+                        .col-md-1= link_to "Cancel", report_tactivities_path(@tactivity.report)
                         .col-md-1= f.button :submit
                     %br/

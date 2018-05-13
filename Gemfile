@@ -8,11 +8,15 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.6'
+<<<<<<< HEAD
 
 
  
 gem 'pg', '~> 0.20'
 # Use Puma as the app server
+=======
+# Use sqlite3 as the database for Active Record
+>>>>>>> ebd08c7ca640bd4f0ca740e4056c4f242e34d536
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -63,8 +67,11 @@ group :test do
   gem'cucumber-rails', :require => false
   gem'cucumber-rails-training-wheels'
   gem'database_cleaner'
-  gem'capybara', '~> 2.13'
   gem'launchy'
+end
+
+group :production do 
+  gem 'pg'         #gem to use in production environment
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -74,3 +81,6 @@ gem 'jquery-rails'
 gem 'haml', '~> 5.0', '>= 5.0.4'
 gem 'simple_form', '~> 3.5', '>= 3.5.1'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
+gem 'wkhtmltopdf-binary-edge'

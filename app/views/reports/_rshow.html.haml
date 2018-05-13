@@ -1,0 +1,98 @@
+%br/
+%br/
+%br/
+.jumbotron.jumbotron-fluid
+    #report
+        %h1.display-4= link_to "#{@report.year} Activities", report_path(@report)
+        %p.lead Hello Faculty! Below, you can view, update or delete your activities from the year #{@report.year}.
+    .row.text-center
+        .col-md-10
+        .col-md-1
+            %h4= link_to "Edit", edit_report_url
+        .col-md-1
+            %h4= link_to "Delete", report_path(@report), method: :delete, data: {confirm: "Are you sure?"}
+%br/
+%br/
+%br/
+
+- if true
+    #tactivities
+        %ul.list-group
+            %li.list-group-item.list-group-item-info.text-center
+                .row.text-center 
+                    %nav{"aria-label" => "Page navigation"}
+                        %ul.pagination
+                            %li
+                                %a{:href => "#"} Summary
+                            %li
+                                %a{:href => "_rshow"} Teaching
+                            %li
+                                %a{:href => "#"} Services
+                            %li
+                                %a{:href => "#"} Research & Professional
+                            %li
+                                %a{:href => "#"} Institutional Support
+                            %li
+                                %a{:href => "#"} References
+                            %li
+                                %a{"aria-label" => "Next", :href => "#"}
+                                    %span{"aria-hidden" => "true"} »
+                %h2 Summary of #{@report.year}
+                %br/
+            %li.list-group-item
+                %br/
+                .row
+                    .col-md-2
+                    .col-md-8
+                        %ul.list-group
+                            - @report.tactivities.each do |tactivity|
+                                %li.list-group-item.disabled
+                                    %h4.card-title #{link_to tactivity.name, report_tactivity_path(@report, tactivity)}
+                                    %h5.card-title #{tactivity.date.strftime("%b %e, %Y (%T %p)")}
+                                %br/
+                    .col-md-1
+                .row
+                    .col-md-2
+                    .col-md-8
+                        %ul.list-group
+                            - @report.sactivities.each do |sactivity|
+                                %li.list-group-item.disabled
+                                    %h4.card-title #{link_to sactivity.name, report_sactivity_path(@report, sactivity)}
+                                    %h5.card-title #{sactivity.date.strftime("%b %e, %Y (%T %p)")}
+                                %br/
+                    .col-md-1
+                .row
+                    .col-md-2
+                    .col-md-8
+                        %ul.list-group
+                            - @report.rsactivities.each do |rsactivity|
+                                %li.list-group-item.disabled
+                                    %h4.card-title #{link_to rsactivity.name, report_rsactivity_path(@report, rsactivity)}
+                                    %h5.card-title #{rsactivity.date.strftime("%b %e, %Y (%T %p)")}
+                                %br/
+                    .col-md-1
+                .row
+                    .col-md-2
+                    .col-md-8
+                        %ul.list-group
+                            - @report.iactivities.each do |iactivity|
+                                %li.list-group-item.disabled
+                                    %h4.card-title #{iactivity.name}
+                                    %h5.card-title #{iactivity.date.strftime("%b %e, %Y (%T %p)")}
+                                %br/
+                    .col-md-1
+            %li.list-group-item
+                %br/
+                .row
+                    .col-md-2
+                    .col-md-8
+                        %ul.list-group
+                            - @report.rfactivities.each do |rfactivity|
+                                %li.list-group-item.disabled
+                                    %h4.card-title #{rfactivity.name}
+                                    %h5.card-title #{rfactivity.date.strftime("%b %e, %Y (%T %p)")}
+                                %br/
+                    .col-md-1
+    
+    %br/
+    %br/

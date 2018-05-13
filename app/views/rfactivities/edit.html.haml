@@ -1,3 +1,50 @@
-%h1 Update References Activity
+%br/
+%br/
+%br/
+.row.text-center
+    .col-md-10
+    .col-md-1
+        %h4= link_to "Edit", edit_report_url(@rfactivity.report)
+    .col-md-1
+        %h4= link_to "Delete", report_path(@rfactivity.report), method: :delete, data: {confirm: "Are you sure?"}
+.jumbotron.jumbotron-fluid
+    #report
+        %h1.display-5= link_to "#{@rfactivity.report.year} Activities", report_path(@rfactivity.report)
+        %p.lead Hello Faculty! Below, you can view, update or delete your activities from the year #{@rfactivity.report.year}.
+    .row.text-center 
+        %nav{"aria-label" => "Page navigation"}
+            %ul.pagination
+                %li= link_to "Summary", report_path(@rfactivity.report)
+                %li= link_to "Teaching", report_tactivities_path(@rfactivity.report)
+                %li= link_to "Services", report_sactivities_path(@rfactivity.report)
+                %li= link_to "Research & Professional", report_rsactivities_path(@rfactivity.report)
+                %li= link_to "Institutional Support", report_iactivities_path(@rfactivity.report)
+                %li.disabled= link_to "References", report_rfactivities_path(@rfactivity.report)
+%br/
+%br/
+%br/
 
-= render 'rfform'
+#activities
+    %ul.list-group
+        %li.list-group-item.list-group-item-info.text-center
+            .row.text-center
+                %h1 Update this #{@rfactivity.report.year} Reference
+                %br/
+        %li.list-group-item
+            %br/
+            #rfactivities
+                .row
+                    .col-md-1
+                    .col-md-10
+                        = render 'rfactivities/rfeform'
+        %li.list-group-item.list-group-item-info.text-center
+            .row.text-center
+                .col-md-3
+                    .row.text-center 
+                        %nav{"aria-label" => "Page navigation"}
+                            %ul.pagination
+                                %li= link_to "« Back to Institutional Support", report_iactivities_path(@rfactivity.report)
+        %br/
+        %br/
+        %br/
+        %br/

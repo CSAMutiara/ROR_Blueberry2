@@ -1,0 +1,21 @@
+.form-container
+    .row
+        %ul.list-group
+            = simple_form_for @iactivity, url: report_iactivity_path do |f|
+                %li.list-group-item.disabled
+                    .row
+                        .col-md-7= f.input :name, label: "Name", input_html: { class: "form-control" }
+                        .col-md-5= f.input :date, label: "Date", input_html: { class: "form-control" }
+                    %br/
+                    = f.input :ta1, label: "What kinds of resources would support you in your research and professional activity? (The Office of Academic Affairs will do its best to accommodate faculty requests within the limits of existing policies and available annual funding.)", input_html: { class: "form-control" }
+                    = f.input :ta2, label: "How has your department supported you in your pedagogical and professional efforts this year?", input_html: { class: "form-control" }
+                    = f.input :ta3, label: "How has the Office of Academic Affairs, or University management as a whole, supported you in your pedagogical and professional efforts this year?", input_html: { class: "form-control" }
+                    = f.input :ta4, label: "If you would like to request a course release for research and/or service for next year, please outline your project and provide arguments for why this release should be granted.", input_html: { class: "form-control" }
+                    = f.input :ta5, label: "If you would like to request funding for projects for next year, please outline your projects and provide arguments for why funds should be granted.  PLEASE NOTE that in each of the cases below there is a separate application procedure which you will need to follow. I would like to request funding through: Mellon funds, Faculty Development Funds, Formation Professionnelle Continue, Other", input_html: { class: "form-control" }
+                    = f.input :ta6, label: "Any other comments you would like to make about institutional support? ", input_html: { class: "form-control" }
+                    %br/
+                    .row
+                        .col-md-9
+                        .col-md-1= link_to "Cancel", report_iactivities_path(@iactivity.report)
+                        .col-md-1= f.button :submit
+                    %br/

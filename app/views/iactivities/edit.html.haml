@@ -1,3 +1,56 @@
-%h1 Update Institutional Support Activity
+%br/
+%br/
+%br/
+.row.text-center
+    .col-md-10
+    .col-md-1
+        %h4= link_to "Edit", edit_report_url(@iactivity.report)
+    .col-md-1
+        %h4= link_to "Delete", report_path(@iactivity.report), method: :delete, data: {confirm: "Are you sure?"}
+.jumbotron.jumbotron-fluid
+    #report
+        %h1.display-5= link_to "#{@iactivity.report.year} Activities", report_path(@iactivity.report)
+        %p.lead Hello Faculty! Below, you can view, update or delete your activities from the year #{@iactivity.report.year}.
+    .row.text-center 
+        %nav{"aria-label" => "Page navigation"}
+            %ul.pagination
+                %li= link_to "Summary", report_path(@iactivity.report)
+                %li.disabled= link_to "Teaching", report_tactivities_path(@iactivity.report)
+                %li= link_to "Services", report_sactivities_path(@iactivity.report)
+                %li= link_to "Research & Professional", report_rsactivities_path(@iactivity.report)
+                %li= link_to "Institutional Support", report_iactivities_path(@iactivity.report)
+                %li= link_to "References", report_rfactivities_path(@iactivity.report)
+%br/
+%br/
+%br/
 
-= render 'iform'
+#activities
+    %ul.list-group
+        %li.list-group-item.list-group-item-info.text-center
+            .row.text-center
+                %h1 Update this #{@iactivity.report.year} Institutional Support Summary
+                %br/
+        %li.list-group-item
+            %br/
+            #iactivities
+                .row
+                    .col-md-1
+                    .col-md-10
+                        = render 'iactivities/ieform'
+        %li.list-group-item.list-group-item-info.text-center
+            .row.text-center
+                .col-md-2
+                    .row.text-center 
+                        %nav{"aria-label" => "Page navigation"}
+                            %ul.pagination
+                                %li= link_to "« Back to Summary", report_path(@iactivity.report)
+                .col-md-8
+                .col-md-2
+                    .row.text-center 
+                        %nav{"aria-label" => "Page navigation"}
+                            %ul.pagination
+                                %li= link_to "Move to Services »", report_sactivities_path(@iactivity.report)
+        %br/
+        %br/
+        %br/
+        %br/
