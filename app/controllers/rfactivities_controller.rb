@@ -1,5 +1,6 @@
 class RfactivitiesController < ApplicationController
-    before_action :find_rfactivity, only: [:show]
+    before_action :find_rfactivity, only: [:show, :edit, :update, :destroy]
+    before_action :find_report, only: [:new, :create, :edit, :index, :destroy, :show]
     
     def index
         @rfactivities = Rfactivity.all.order("created_at DESC")
@@ -13,23 +14,38 @@ class RfactivitiesController < ApplicationController
     end
     
     def create
-        @report = Report.find(params[:report_id])
-        @rfactivity = @report.rfactivities.create(params[:rfactivity].permit(:date, :name, :ta1, :ta2, :status))
-        redirect_to report_path(@report)
+        @rfactivity = @report.rfactivities.create(params[:rfactivity]).permit(:date, :name, :ta1, :ta2, :status)
+        render 'rfactivities/show'
     end
     
     def edit
+        @rfactivities = Rfactivity.all.order("created_at DESC")
     end
     
     def update
+        if @rfactivity.update(rfactivity_params)
+            redirect_to report_rfactivity_path
+        else
+            render 'edit'
+        end
     end
     
     def destroy
+        @rfactivity.destroy
+        redirect_to report_rfactivities_path(@report)
     end
     
     private
+    def rfactivity_params
+        params.require(:rfactivity).permit(:date, :name, :ta1, :ta2, :status)
+    end 
     
-    def find_tactivity
+    def find_rfactivity
         @rfactivity = Rfactivity.find(params[:id])
     end
+    
+    def find_report
+        @report = Report.find(params[:report_id])
+    end
+    
 end

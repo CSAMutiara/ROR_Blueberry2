@@ -1,10 +1,16 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
+  before_action :require_rfactivity, only: [:new, :create]
+  
 
   # GET /books
   # GET /books.json
+  # GET /reports/:report_id/rfactivities/:rfactivity_id/books
   def index
-    @books = Book.all
+    rfactivity = Rfactivity.find(params[:rfactivity_id])
+    @books = rfactivity.books
+    
+    render json: @books.sort
   end
 
   # GET /books/1
@@ -14,7 +20,8 @@ class BooksController < ApplicationController
 
   # GET /books/new
   def new
-    @book = Book.new
+    rfactivity = Rfactivity.find(params[:rfactivity_id])
+    @book = rfactivity.books.new
   end
 
   # GET /books/1/edit
@@ -24,8 +31,9 @@ class BooksController < ApplicationController
   # POST /books
   # POST /books.json
   def create
-    @book = Book.new(book_params)
-
+    rfactivity = Rfactivity.find(params[:rfactivity_id])
+    @book = rfactivity.books.new(book_params)
+    
     respond_to do |format|
       if @book.save
         format.html { redirect_to @book, notice: 'Book was successfully created.' }
@@ -70,5 +78,11 @@ class BooksController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
       params.require(:book).permit(:title, :author, :publisher, :year)
+    end
+   
+    def require_rfactivity
+      unless Rfactivity.id?
+        redirect_to new_report_rfactivity_path
+      end
     end
 end

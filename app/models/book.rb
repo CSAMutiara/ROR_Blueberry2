@@ -1,3 +1,3 @@
 class Book < ApplicationRecord
-    belongs_to :rfactivities
+    belongs_to :rfactivity
 end

@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20180512162109) do
     t.string "author"
     t.string "publisher"
     t.string "year"
+    t.integer "rfactivity_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,15 +1,15 @@
 = simple_form_for([@report, @report.rfactivities.build]) do |f|
   %h2 
-%p Choose a type of reference to add
-.dropdown
-  %button.dropbtn{:onclick => "myFunction()"} Refrences
-  #myDropdown.dropdown-content
-    %input#myInput{:onkeyup => "filterFunction()", :placeholder => "Search..", :type => "text"}/
-    %a= link_to "books",  new_book_path(@report) 
-    %a= link_to "collaborations with student",  new_collabswstudent_path(@report) 
-    %a= link_to "collaborations with student",  new_collabswfaculty_path(@report) 
+  %p Choose a type of reference to add
+  .dropdown
+    %button.dropbtn{:onclick => "myFunction()"} References
+    #myDropdown.dropdown-content
+      %input#myInput{:onkeyup => "filterFunction()", :placeholder => "Search..", :type => "text"}
+      %a= link_to "books", books_new_path
+    //%a= link_to "collaborations with student",  new_collabswstudent_path(@report)
+    //%a= link_to "collaborations with faculty",  new_collabswfaculty_path(@report) 
     
-    
+
 :javascript
   /* When the user clicks on the button,
   toggle between hiding and showing the dropdown content */
