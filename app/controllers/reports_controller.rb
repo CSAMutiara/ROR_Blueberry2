@@ -3,7 +3,15 @@ class ReportsController < ApplicationController
     
     def index
         @reports = Report.all.order("created_at DESC")
+        respond_to do |format|
+            format.html
+            format.pdf do
+                render template: '', pdf: 'Achievements Report' + Time.now.strftime('%v %H:%M:%S').to_s, javascript_delay: 10000,
+                layout: 'pdf.html.haml', disposition: 'attachment'
+            end
+        end
     end
+
     
     def show
     end
