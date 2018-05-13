@@ -14,7 +14,7 @@ class RfactivitiesController < ApplicationController
     end
     
     def create
-        @rfactivity = @report.rfactivities.create(params[:rfactivity]).permit(:date, :name, :ta1, :ta2, :status)
+        @rfactivity = @report.rfactivities.create(rfactivity_params)
         render 'rfactivities/show'
     end
     
