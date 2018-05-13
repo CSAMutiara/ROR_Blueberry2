@@ -2,41 +2,71 @@
 %br/
 %br/
 .jumbotron.jumbotron-fluid
-    .container
-        %h1.display-4 Teaching
-        %p.lead Hello Faculty! Below, you will find all of your Teaching Activities in descending order
+    #report
+        %h1.display-4= link_to "#{@report.year} Activities", report_path(@report)
+        %p.lead Hello Faculty! Below, you can view, update or delete your activities from the year #{@report.year} in descending order
+    .row.text-center
+        .col-md-10
+        .col-md-1
+            %h4= link_to "Edit", edit_report_url(@report)
+        .col-md-1
+            %h4= link_to "Delete", report_path(@report), method: :delete, data: {confirm: "Are you sure?"}
 %br/
-%bbr/
+%br/
 %br/
 
-.activity-cards
-    - @tactivities.each do |tactivity|
-        .card.text-center
-            .card-header
-            .card-body
-                %ul.list-group
-                    %li.list-group-item.disabled A #{link_to tactivity.report.year, report_path(tactivity.report)} Teaching Activity
-                    %li.list-group-item.list-group-item-info
-                        %h2.card-title #{tactivity.name}
-                        %h4.card-text by faculty
-                    %li.list-group-item.disabled
-                        Details:
-                        %br/
-                        %br/
-                        %ul.list-group.list-group-flush
-                            %li.list-group-item #{tactivity.ta1}
-                            %li.list-group-item #{tactivity.ta2}
-                            %li.list-group-item #{tactivity.ta3}
-                            %li.list-group-item #{tactivity.ta4}
-                        %p.text-muted Submitted: #{tactivity.date.strftime("%b %e, %Y (%T %p)")}
-                    %li.list-group-item
-                        .row
-                            .col-md-5
-                            .col-md-1
-                                %h5= link_to "Edit", edit_report_tactivity_path(@report, tactivity)
-                            .col-md-1 
-                                %h5= link_to "Delete", report_tactivity_path(@report, tactivity), method: :delete, data: {confirm: "Are you sure?"}
-        %br/
-        %br/
-        %br/
-        %br/
+#activities
+    %ul.list-group
+        %li.list-group-item.list-group-item-info.text-center
+            .row.text-center 
+                %nav{"aria-label" => "Page navigation"}
+                    %ul.pagination
+                        %li= link_to "Summary", report_path(@report)
+                        %li= link_to "Teaching", report_tactivities_path(@report)
+                        %li= link_to "Services", report_sactivities_path(@report)
+                        %li= link_to "Research & Professional", report_rsactivities_path(@report)
+                        %li= link_to "Institutional Support", report_iactivities_path(@report)
+                        %li= link_to "References", report_rfactivities_path(@report)
+                        %li
+                            %a{"aria-label" => "Next", :href => "#"}
+                                %span{"aria-hidden" => "true"} »
+            %h2 Teaching Activities of #{@report.year}
+            %br/
+        %li.list-group-item
+            %br/
+            #tactivities
+                - @tactivities.each do |tactivity|
+                    .row
+                        .col-md-1
+                        .col-md-10
+                            .card.text-center
+                                .card-body
+                                    %ul.list-group.text-center
+                                        - if tactivity.date.strftime("%Y").to_i == @report.year
+                                            %li.list-group-item.disabled A #{link_to @report.year, report_path(@report)} Teaching Activity
+                                            %li.list-group-item.list-group-item-info
+                                                %h2.card-title #{tactivity.name}
+                                                %h4.card-text by faculty.name
+                                            %li.list-group-item.disabled
+                                                Details:
+                                                %br/
+                                                %br/
+                                                %ul.list-group.list-group-flush
+                                                    %li.list-group-item #{tactivity.ta1}
+                                                    %li.list-group-item #{tactivity.ta2}
+                                                    %li.list-group-item #{tactivity.ta3}
+                                                    %li.list-group-item #{tactivity.ta4}
+                                                %p.text-muted Submitted: #{tactivity.date.strftime("%b %e, %Y (%T %p)")}
+                                            %li.list-group-item
+                                                .row
+                                                    .col-md-5
+                                                    .col-md-1
+                                                        %h5= link_to "Edit", edit_report_tactivity_path(@report, tactivity)
+                                                    .col-md-1 
+                                                        %h5= link_to "Delete", report_tactivity_path(@report, tactivity), method: :delete, data: {confirm: "Are you sure?"}
+                                            %br/
+                        .col-md-1
+            %br/
+            %br/
+            %br/
+            %br/

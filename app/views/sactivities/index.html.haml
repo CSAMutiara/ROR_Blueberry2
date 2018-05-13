@@ -1,53 +1,73 @@
 %br/
 %br/
 %br/
-.nav.nav-tabs.my-2.my-lg-0
-    %li#Teaching
-        = link_to "Teaching", 'reports/1/tactivities/', id: "teaching"
-    %li#Service
-        = link_to "Service", 'reports/17/sactivities/', id: "service"
-    %li#Research
-        = link_to "Research & Professional", '#rsactivities#new', id: "research"
-    %li#Institutional                    
-        = link_to "Institutional Support", '#iactivities#index', id: "institutional support" 
-    %li#References                    
-        = link_to "References", '#rfactivities#index', id: "references"
-    %li#Archive                    
-        = link_to "Archive", '/', id: "archive" 
 .jumbotron.jumbotron-fluid
-    .container
-        %h1.display-4 Service
+    #report
+        %h1.display-4= link_to "#{@report.year} Activities", report_path(@report)
+        %p.lead Hello Faculty! Below, you can view, update or delete your activities from the year #{@report.year} in descending order
+    .row.text-center
+        .col-md-10
+        .col-md-1
+            %h4= link_to "Edit", edit_report_url(@report)
+        .col-md-1
+            %h4= link_to "Delete", report_path(@report), method: :delete, data: {confirm: "Are you sure?"}
 %br/
 %br/
-.activity-cards
-    - @sactivities.each do |sactivity|
-        .card.text-center
-            .card-header
-            .card-body
-                %ul.list-group
-                    %li.list-group-item.disabled A #{link_to sactivity.report.year, report_path(sactivity.report)} Service Activity
-                    %li.list-group-item.list-group-item-info
-                        %h2.card-title #{sactivity.name}
-                        %h4.card-text by faculty
-                    %li.list-group-item.disabled
-                        Details:
-                        %br/
-                        %br/
-                        %ul.list-group.list-group-flush
-                            %li.list-group-item #{sactivity.ta1}
-                            %li.list-group-item #{sactivity.ta2}
-                            %li.list-group-item #{sactivity.ta3}
-                            %li.list-group-item #{sactivity.ta4}
-                            %li.list-group-item #{sactivity.ta5}
-                        %p.text-muted Submitted: #{sactivity.date.strftime("%b %e, %Y (%T %p)")}
-                    %li.list-group-item
-                        .row
-                            .col-md-5
-                            .col-md-1
-                                %h5= link_to "Edit", edit_report_sactivity_path(@report, sactivity)
-                            .col-md-1 
-                                %h5= link_to "Delete", report_sactivity_path(@report, sactivity), method: :delete, data: {confirm: "Are you sure?"}
-        %br/
-        %br/
-        %br/
-        %br/
+%br/
+
+#activities
+    %ul.list-group
+        %li.list-group-item.list-group-item-info.text-center
+            .row.text-center 
+                %nav{"aria-label" => "Page navigation"}
+                    %ul.pagination
+                        %li= link_to "Summary", report_path(@report)
+                        %li= link_to "Teaching", report_tactivities_path(@report)
+                        %li= link_to "Services", report_sactivities_path(@report)
+                        %li= link_to "Research & Professional", report_rsactivities_path(@report)
+                        %li= link_to "Institutional Support", report_iactivities_path(@report)
+                        %li= link_to "References", report_rfactivities_path(@report)
+                        %li
+                            %a{"aria-label" => "Next", :href => "#"}
+                                %span{"aria-hidden" => "true"} »
+            %h2 Services of #{@report.year}
+            %br/
+        %li.list-group-item
+            %br/
+            #tactivities
+                - @sactivities.each do |sactivity|
+                    .row
+                        .col-md-1
+                        .col-md-10
+                            .card.text-center
+                                .card-body
+                                    %ul.list-group.text-center
+                                        - if sactivity.date.strftime("%Y").to_i == @report.year
+                                            %li.list-group-item.disabled A #{link_to @report.year, report_path(@report)} Service Activity
+                                            %li.list-group-item.list-group-item-info
+                                                %h2.card-title #{sactivity.name}
+                                                %h4.card-text by faculty
+                                            %li.list-group-item.disabled
+                                                Details:
+                                                %br/
+                                                %br/
+                                                %ul.list-group.list-group-flush
+                                                    %li.list-group-item #{sactivity.ta1}
+                                                    %li.list-group-item #{sactivity.ta2}
+                                                    %li.list-group-item #{sactivity.ta3}
+                                                    %li.list-group-item #{sactivity.ta4}
+                                                    %li.list-group-item #{sactivity.ta5}
+                                                %p.text-muted Submitted: #{sactivity.date.strftime("%b %e, %Y (%T %p)")}
+                                            %li.list-group-item
+                                                .row
+                                                    .col-md-5
+                                                    .col-md-1
+                                                        %h5= link_to "Edit", edit_report_sactivity_path(@report, sactivity)
+                                                    .col-md-1 
+                                                        %h5= link_to "Delete", report_sactivity_path(@report, sactivity), method: :delete, data: {confirm: "Are you sure?"}
+                                                %br/
+                        .col-md-1
+            %br/
+            %br/
+            %br/
+            %br/

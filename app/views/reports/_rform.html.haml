@@ -7,21 +7,10 @@
                     .row
                         .col-md-1
                         .col-md-10
-                            %h3= "Year of Report:"
+                            %h3= "Select A Year:"
                             %br/
                             %form
                                 .form-group
-                                    %label{:for => "sel1"} Select Year:
-                                    %select#sel1.form-control
-                                        %option 2018 
-                                        = link_to '22'
-                                        %option 2019
-                                        %option 2020
-                                    %br/
-                                    .row
-                                        .col-md-8
-                                        .col-md-1
-                                            = link_to "Cancel", '/'
-                                        .col-md-2
-                                            = link_to "Select", '24'
-                    %br/
+                                    %h4= link_to "#{DateTime.now.year}", '/'
+                                    %h4= link_to "#{DateTime.now.year+1}", '/reports/29'
+                                    %h4= link_to "#{DateTime.now.year+2}", '/'
