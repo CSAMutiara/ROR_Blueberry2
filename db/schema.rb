@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20180505174900) do
     t.string "venue"
     t.string "city"
     t.string "presentation"
+    t.integer "reference_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
