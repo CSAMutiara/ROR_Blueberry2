@@ -58,8 +58,11 @@ group :test do
   gem'cucumber-rails', :require => false
   gem'cucumber-rails-training-wheels'
   gem'database_cleaner'
-  gem'capybara', '~> 2.13'
   gem'launchy'
+end
+
+group :production do 
+  gem 'pg'         #gem to use in production environment
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
