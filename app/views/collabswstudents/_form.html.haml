@@ -1,0 +1,8 @@
+= simple_form_for(@collabswstudent) do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :teachname
+    = f.input :studename
+    = f.input :explanation
+  .form-actions
+    = f.button :submit

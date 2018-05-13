@@ -1,3 +1,3 @@
 class Rfactivity < ApplicationRecord
-  belongs_to :report
+  has_many :books
 end

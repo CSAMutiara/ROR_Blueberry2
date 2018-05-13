@@ -1,0 +1,34 @@
+%p#notice= notice
+%p
+  %strong Books:
+  = @reference.books
+%p
+  %strong Grants:
+  = @reference.grants
+%p
+  %strong Stcollabs:
+  = @reference.stcollabs
+%p
+  %strong Facollabs:
+  = @reference.facollabs
+%p
+  %strong Aebcreferences:
+  = @reference.aebcreferences
+%p
+  %strong Efvreferences:
+  = @reference.efvreferences
+%p
+  %strong Wcpitreferences:
+  = @reference.wcpitreferences
+%p
+  %strong Pcmreferences:
+  = @reference.pcmreferences
+%p
+  %strong Cifwreferences:
+  = @reference.cifwreferences
+%p
+  %strong Ahareferences:
+  = @reference.ahareferences
+= link_to 'Edit', edit_reference_path(@reference)
+|
+= link_to 'Back', references_path

@@ -1,0 +1,10 @@
+%p#notice= notice
+%p
+  %strong Name:
+  = @collabswfaculty.name
+%p
+  %strong Explanation:
+  = @collabswfaculty.explanation
+= link_to 'Edit', edit_collabswfaculty_path(@collabswfaculty)
+|
+= link_to 'Back', collabswfaculties_path

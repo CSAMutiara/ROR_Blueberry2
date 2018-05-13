@@ -1,0 +1,34 @@
+%p#notice= notice
+%h1 References
+%table
+  %thead
+    %tr
+      %th Books
+      %th Grants
+      %th Stcollabs
+      %th Facollabs
+      %th Aebcreferences
+      %th Efvreferences
+      %th Wcpitreferences
+      %th Pcmreferences
+      %th Cifwreferences
+      %th Ahareferences
+      %th{:colspan => "3"}
+  %tbody
+    - @references.each do |reference|
+      %tr
+        %td= reference.books
+        %td= reference.grants
+        %td= reference.stcollabs
+        %td= reference.facollabs
+        %td= reference.aebcreferences
+        %td= reference.efvreferences
+        %td= reference.wcpitreferences
+        %td= reference.pcmreferences
+        %td= reference.cifwreferences
+        %td= reference.ahareferences
+        %td= link_to 'Show', reference
+        %td= link_to 'Edit', edit_reference_path(reference)
+        %td= link_to 'Destroy', reference, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Reference', new_reference_path

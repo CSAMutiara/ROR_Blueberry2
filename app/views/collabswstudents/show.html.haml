@@ -1,0 +1,13 @@
+%p#notice= notice
+%p
+  %strong Teachname:
+  = @collabswstudent.teachname
+%p
+  %strong Studename:
+  = @collabswstudent.studename
+%p
+  %strong Explanation:
+  = @collabswstudent.explanation
+= link_to 'Edit', edit_collabswstudent_path(@collabswstudent)
+|
+= link_to 'Back', collabswstudents_path

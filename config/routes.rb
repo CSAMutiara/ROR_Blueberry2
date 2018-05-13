@@ -1,13 +1,20 @@
 Rails.application.routes.draw do
-  resources :collabswfaculties
-  resources :collabswstudents
-  resources :books
+    
+  root 'reports#index'
+    
     resources :reports do
         resources :tactivities
         resources :sactivities
         resources :rsactivities
         resources :iactivities
-        resources :rfactivities
+                                resources :rfactivities do 
+                                  resources :collabswfaculties
+                                  resources :collabswstudents
+                                   resources :books
+                                end 
     end 
-    root 'reports#index'
+    resources :books
+    resources :collabswfaculties
+    resources :collabswstudents
+    
 end
