@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Teachname:</strong>
+  <%= @collabswstudent.teachname %>
+</p>
+
+<p>
+  <strong>Studename:</strong>
+  <%= @collabswstudent.studename %>
+</p>
+
+<p>
+  <strong>Explanation:</strong>
+  <%= @collabswstudent.explanation %>
+</p>
+
+<%= link_to 'Edit', edit_collabswstudent_path(@collabswstudent) %> |
+<%= link_to 'Back', collabswstudents_path %>
