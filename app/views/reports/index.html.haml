@@ -16,15 +16,7 @@
             %ul.list-group
                 %li.list-group-item.list-group-item-info.text-center
                     %h2.card-title Workspace
-                %li.list-group-item.disabled
-                    - @current = false
-                    - @upcoming = false
-                    - @reports.each do |report|
-                        - if (Time.now.strftime("%Y").to_i) == report.year
-                            - @current = true
-                        - if (Time.now.strftime("%Y").to_i) < report.year
-                            - @upcoming = true
-                    %br/
+                %li.list-group-item.disabled    
                     %br/
                     %ul.list-group.list-group-flush
                         .row
@@ -32,56 +24,60 @@
                             .col-md-10
                                 %li.list-group-item
                                     .row
-                                        - if @current    
-                                            - @reports.each do |report|
-                                                - if Time.now.strftime("%Y") == report.year.to_s
-                                                    .col-md-1
-                                                    .col-md-8
-                                                        %h4= link_to "Current Faculty Activity Report (#{report.year})", report
-                                                    .col-md-1
-                                                        %p #{link_to "Edit", edit_report_path(report)}
-                                                    .col-md-1
-                                                        %p= link_to "Delete", report_path(report), method: :delete, data: {confirm: "Are you sure?"}
-                                                    .col-md-1
-                                        - else
-                                            .col-md-1
-                                            .col-md-10
-                                                %h4.card-title.disabled Current Faculty Activity Report Missing
-                                                %p.card-title You haven't created a Faculty Activiity Report for #{Time.now.strftime("%Y")} yet. Click #{link_to "here", new_report_path} to get started.
-                    %br/
-                    %ul.list-group.list-group-flush
+                                        .col-md-1
+                                        .col-md-10
+                                            %h4.card-title.disabled Current Faculty Activity Report Missing
+                                            %p.card-title You haven't created a Faculty Activiity Report for #{Time.now.strftime("%Y")} yet. Click #{link_to "here", new_report_path} to get started.
+                        %br/
                         .row
                             .col-md-1
                             .col-md-10
-                                - if @upcoming
-                                    - @reports.each do |report|
-                                        - if (Time.now.strftime("%Y").to_i) < report.year
-                                            %li.list-group-item
-                                                .row
-                                                    .col-md-1
-                                                    .col-md-8
-                                                        %h4= link_to "Upcoming Faculty Activity Report (#{report.year})", report
-                                                    .col-md-1
-                                                        %p #{link_to "Edit", edit_report_path(report)}
-                                                    .col-md-1
-                                                        %p= link_to "Delete", report_path(report), method: :delete, data: {confirm: "Are you sure?"}
-                                                    .col-md-1
-                                    %li.list-group-item
+                                %li.list-group-item
+                                    .row
+                                        .col-md-1
+                                        .col-md-10
+                                            %h4.card-title.disabled No Upcoming Faculty Activity Reports
+                                            %p.card-title You haven't created any Faculty Activiity Report for upcoming years yet. Click #{link_to "here", new_report_path} to get started.
+                    %ul.list-group.list-group-flush        
+                        .row
+                            .col-md-1
+                            .col-md-10
+                                %ul.list-group.list-group-flush   
+                                    - @reports.each do |report|     
+                                        %li.list-group-item  
+                                            .row
+                                                .col-md-1
+                                                .col-md-10
+                                                    - if Time.now.strftime("%Y") == report.year.to_s
+                                                        .row
+                                                            .col-md-1
+                                                            .col-md-8
+                                                                %h4= link_to "Current Faculty Activity Report (#{report.year})", report
+                                                            .col-md-1
+                                                                %p #{link_to "Edit", edit_report_path(report)}
+                                                            .col-md-1
+                                                                %p= link_to "Delete", report_path(report), method: :delete, data: {confirm: "Are you sure?"}
+                                                            .col-md-1
+                                                    - if (Time.now.strftime("%Y").to_i) < report.year
+                                                        .row
+                                                            .col-md-1
+                                                            .col-md-8
+                                                                %h4= link_to "Upcoming Faculty Activity Report (#{report.year})", report
+                                                            .col-md-1
+                                                                %p #{link_to "Edit", edit_report_path(report)}
+                                                            .col-md-1
+                                                                %p= link_to "Delete", report_path(report), method: :delete, data: {confirm: "Are you sure?"}
+                                                            .col-md-1
+                                    %br/
+                                    %li.list-group-item    
                                         .row
                                             .col-md-1
                                             .col-md-10
                                                 %h4.card-title.disabled Missing an Upcoming Faculty Activity Report?
                                                 %p.card-title Would you like to create another Faculty Activiity Report for another upcoming year? Click #{link_to "here", new_report_path} to continue.
-                                - else
-                                    %li.list-group-item
-                                        .row
-                                            .col-md-1
-                                            .col-md-10
-                                                %h4.card-title.disabled No Upcoming Faculty Activity Reports
-                                                %p.card-title You haven't created any Faculty Activiity Report for upcoming years yet. Click #{link_to "here", new_report_path} to get started.
-                    %br/
-    %br/
-    %br/
+%br/
+%br/
+%br/
     
 
 .archive
