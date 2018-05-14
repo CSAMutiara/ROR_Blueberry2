@@ -20,5 +20,4 @@ Scenario: Adding an activity to the report
 	When I click on "Create Upcoming Faculty Activity Report (2019)"
 	Then I should see the form for “Year of Report”
 	When I enter the year and press “Create Report”
-	Then I should be on the show report page of that year.    
-     
+	Then I should be on the show report page of that year 

@@ -6,8 +6,7 @@ class ReportsController < ApplicationController
         respond_to do |format|
             format.html
             format.pdf do
-                render template: '', pdf: 'Achievements Report' + Time.now.strftime('%v %H:%M:%S').to_s, javascript_delay: 10000,
-                layout: 'pdf.html.haml', disposition: 'attachment'
+                render pdf: "Achievements Report"
             end
         end
     end

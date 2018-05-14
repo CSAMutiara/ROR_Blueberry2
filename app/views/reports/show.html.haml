@@ -13,9 +13,6 @@
             %h4= link_to "Delete", report_path(@report), method: :delete, data: {confirm: "Are you sure?"}
 %br/
 %br/
-= link_to report_path(@report, format: :pdf), target: "pdf.html", title: 'Click to Export as PDF', class: 'btn btn-default' do
-    %i.glyphicon.glyphicon-download-alt
-    Export as PDF
 %br/
 %br/
 %br/
