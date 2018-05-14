@@ -12,14 +12,6 @@
 
 ActiveRecord::Schema.define(version: 20180422132930) do
 
-  create_table "activitygoers", force: :cascade do |t|
-    t.string "name"
-    t.string "provider"
-    t.string "uid"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "iactivities", force: :cascade do |t|
     t.string "name"
     t.datetime "date"
@@ -99,6 +91,8 @@ ActiveRecord::Schema.define(version: 20180422132930) do
 
   create_table "users", force: :cascade do |t|
     t.string "name"
+    t.string "provider"
+    t.integer "uid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
