@@ -1,18 +1,18 @@
+default: &default
+  adapter: sqlite3
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
 development:
-  adapter: postgresql
-  encoding: unicode
-  database: app_dev
-  pool: 5
-  username: 'postgres'
-  password: 'password'
-  host: localhost
-  
+  <<: *default
+  database: app_development
+test:
+  <<: *default
+  database: app_test
 production:
   adapter: postgresql
-  encoding: utf8
-  database: app_production
-  pool: 5
+  host: localhost
   username: 'postgres'
   password: 'password'
-  host: localhost
   timeout: 5000
+  port: 5432
+  database: app_production
