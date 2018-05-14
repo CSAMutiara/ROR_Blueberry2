@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
  get  'auth/:provider/callback' => 'sessions#create'
- get 'logout' => 'sessions#destroy'
+ delete 'logout' => 'sessions#destroy'
  get  'auth/failure' => 'sessions#failure'
  get  'auth/twitter', :as => 'login'
 

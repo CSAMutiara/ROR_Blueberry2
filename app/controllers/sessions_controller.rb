@@ -3,16 +3,21 @@ class SessionsController < ApplicationController
   skip_before_action :set_current_user, only: [:create, :destroy]
   
   def create
-    auth = request.env["omniauth.auth"]
-    @user = User.where(:provider => auth["provider"], :uid => auth["id"]) ||
-      User.create_with_omniauth(auth)
-    session.user_id = @user[:uid]
+    begin
+      @user = User.create_with_omniauth(request.env['omniauth.auth'])
+      session[:user_id] = @user.id
+      flash[:success] = "Welcome, #{@user.name}!"
+    rescue
+      flash[:warning] = "There was an error while trying to authenticate you..."
+    end
     redirect_to reports_path
   end
   
   def destroy
-    session.delete(:user_id)
-    flash[:notice] = 'Logged out successfully.'
-    redirect_to root_path
+    if @current_user
+      session.delete(:user_id)
+      flash[:notice] = 'Logged out successfully.'
+    end
+    redirect_to reports_path
   end
 end
