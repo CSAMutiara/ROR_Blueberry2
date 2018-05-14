@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180513162030) do
+ActiveRecord::Schema.define(version: 20180512133209) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,15 +28,8 @@ ActiveRecord::Schema.define(version: 20180513162030) do
     t.bigint "report_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "exists"
     t.index ["report_id"], name: "index_iactivities_on_report_id"
-  end
-
-  create_table "references", force: :cascade do |t|
-    t.string "type"
-    t.date "date"
-    t.integer "report_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "reports", force: :cascade do |t|
@@ -54,6 +47,7 @@ ActiveRecord::Schema.define(version: 20180513162030) do
     t.bigint "report_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "exists"
     t.index ["report_id"], name: "index_rfactivities_on_report_id"
   end
 
@@ -68,6 +62,7 @@ ActiveRecord::Schema.define(version: 20180513162030) do
     t.bigint "report_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "exists"
     t.index ["report_id"], name: "index_rsactivities_on_report_id"
   end
 
@@ -83,6 +78,7 @@ ActiveRecord::Schema.define(version: 20180513162030) do
     t.bigint "report_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "exists"
     t.index ["report_id"], name: "index_sactivities_on_report_id"
   end
 
@@ -97,6 +93,7 @@ ActiveRecord::Schema.define(version: 20180513162030) do
     t.bigint "report_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "exists"
     t.index ["report_id"], name: "index_tactivities_on_report_id"
   end
 
